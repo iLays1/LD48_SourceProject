@@ -8,10 +8,11 @@ public class SkillSelection : MonoBehaviour
     public static PlayerAction selectedAction;
     public PlayerAction[] skills;
     int selectionIndex = 0;
+    public AudioSource source;
 
     private void Awake()
     {
-        SetSkill(selectionIndex);
+        SetSkill(selectionIndex, false);
         for (int i = 0; i < skills.Length; i++)
         {
             int num = i;
@@ -50,8 +51,10 @@ public class SkillSelection : MonoBehaviour
         SetSkill(selectionIndex + 1);
     }
 
-    public void SetSkill(int index)
+    public void SetSkill(int index, bool playSound = true)
     {
+        if(playSound) source.Play();
+
         if (index < 0) index = skills.Length - 1;
         if (index > skills.Length - 1) index = 0;
 

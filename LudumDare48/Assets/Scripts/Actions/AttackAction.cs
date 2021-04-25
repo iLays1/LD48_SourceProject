@@ -12,6 +12,7 @@ public class AttackAction : UnitAction
         user.transform.DOPunchPosition(new Vector3(dir,0,0) * 0.8f, 0.1f);
         target.TakeDamage(user.attackPower);
 
+        user.attackSound.Play();
         if (user.visuals != null)
             user.visuals.AttackAnimation();
     }

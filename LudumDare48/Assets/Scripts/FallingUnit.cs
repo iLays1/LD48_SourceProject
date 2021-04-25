@@ -17,6 +17,11 @@ public class FallingUnit : MonoBehaviour
     public int laneIndex;
     public int lastIndex;
 
+    public AudioSource hitSound;
+    public AudioSource deathSound;
+    public AudioSource attackSound;
+    public AudioSource moveSound;
+
     protected LaneManager laneManager;
     protected Lane[] lanes { get { return laneManager.lanes; } }
 
@@ -47,12 +52,14 @@ public class FallingUnit : MonoBehaviour
 
         if(hp <= 0)
         {
+            deathSound.Play();
             screenShaker.Shake(0.2f, 0.1f);
             hp = 0;
             Death();
             return;
         }
 
+        hitSound.Play();
         FadingText.Create(transform.position, damage.ToString());
         screenShaker.Shake(0.1f, 0.05f);
         OnDamaged.Invoke();
@@ -71,6 +78,7 @@ public class FallingUnit : MonoBehaviour
         if (visuals != null)
             visuals.FlipLeft();
 
+        moveSound.Play();
         SetLane(laneIndex - 1);
     }
     public void MoveRight()
@@ -78,6 +86,7 @@ public class FallingUnit : MonoBehaviour
         if (visuals != null)
             visuals.FlipRight();
 
+        moveSound.Play();
         SetLane(laneIndex + 1);
     }
 

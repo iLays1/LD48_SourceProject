@@ -25,7 +25,7 @@ public class ThreatSpawner : MonoBehaviour
     {
         int[] arr = Enumerable.Range(0, laneManager.lanes.Length).ToArray();
         UtilityCode.Shuffle(arr);
-
+        
         for (int i = 0; i < count; i++)
         {
             var haz = Instantiate(hazardPrefab);

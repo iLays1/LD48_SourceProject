@@ -18,7 +18,7 @@ public class FallingEnemy : FallingUnit
     protected override void Awake()
     {
         base.Awake();
-        actTimer = actSpeed;
+        actTimer = actSpeed + 1;
         timerText.GetComponent<MeshRenderer>().sortingLayerName = "UI";
         player = FindObjectOfType<FallingPlayer>();
         TickManager.OnTick.AddListener(Tick);
@@ -40,7 +40,7 @@ public class FallingEnemy : FallingUnit
     public virtual void EnemyAct() => StartCoroutine(EnemyActCoroutine());
     IEnumerator EnemyActCoroutine()
     {
-        yield return new WaitForSeconds(0.04f); 
+        yield return new WaitForSeconds(0.03f); 
 
         var r = (laneIndex < player.laneIndex) ? 1 : 0;
         

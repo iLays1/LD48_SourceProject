@@ -21,6 +21,8 @@ public class FadingText : MonoBehaviour
 
     public void Initalize(string text, Color color, float duration)
     {
+        GetComponent<MeshRenderer>().sortingLayerName = "UI";
+
         textMesh.text = text;
         textMesh.color = color;
 

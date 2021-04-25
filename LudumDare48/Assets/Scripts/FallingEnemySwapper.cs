@@ -7,7 +7,7 @@ public class FallingEnemySwapper : FallingEnemy
     public override void EnemyAct() => StartCoroutine(EnemyActCoroutine());
     IEnumerator EnemyActCoroutine()
     {
-        yield return new WaitForSeconds(0.42f);
+        yield return new WaitForSeconds(0.04f);
         attackAction.Do(this, 0);
     }
 }
