@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WallScroll : MonoBehaviour
 {
+    [SerializeField] bool foreGround = false;
     [SerializeField] float xSpeed;
     [SerializeField] float ySpeed;
 
@@ -12,7 +13,10 @@ public class WallScroll : MonoBehaviour
 
     private void Awake()
     {
-        mat = GetComponent<MeshRenderer>().material;
+        var mr = GetComponent<MeshRenderer>();
+        mat = mr.material;
+        if (foreGround)
+            mr.sortingLayerName = "ForeGround";
     }
 
     private void Update()

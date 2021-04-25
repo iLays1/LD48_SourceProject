@@ -7,19 +7,41 @@ using UnityEngine.Events;
 public class FallingPlayer : FallingUnit
 {
     public static UnityEvent OnAction = new UnityEvent();
+    public bool isActive = true;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        //TickManager.OnOutOfMoves.AddListener(() => isActive = false);
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if(isActive)
         {
-            MoveLeft();
-            OnAction.Invoke();
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                MoveLeft();
+                TickAction();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                TickAction();
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                MoveRight();
+                TickAction();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            MoveRight();
-            OnAction.Invoke();
-        }
+    }
+
+    void TickAction() => StartCoroutine(TickActionCoroutine());
+    IEnumerator TickActionCoroutine()
+    {
+        yield return new WaitForEndOfFrame();
+
+        OnAction.Invoke();
     }
 
     public override void SetLane(int index)
@@ -52,6 +74,7 @@ public class FallingPlayer : FallingUnit
                     SkillSelection.selectedAction.DoRight(this);
                     return;
                 }
+                return;
             }
 
             //Hit wall
@@ -66,5 +89,11 @@ public class FallingPlayer : FallingUnit
                 return;
             }
         }
+    }
+
+    protected override void Death()
+    {
+        Debug.Log("YOU LOSE");
+        base.Death();
     }
 }

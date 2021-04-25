@@ -12,7 +12,7 @@ public class PullAction : UnitAction
         
         if (dir == 1)
         {
-            if (user.laneIndex > 0)
+            if (user.laneIndex > 0 && laneManager.lanes[user.laneIndex - 1].occupant == null)
             {
                 user.SetLane(user.laneIndex - 1);
                 target.SetLane(user.laneIndex + 1);
@@ -20,7 +20,7 @@ public class PullAction : UnitAction
         }
         if (dir == -1)
         {
-            if (user.laneIndex < laneManager.lanes.Length - 1)
+            if (user.laneIndex < laneManager.lanes.Length - 1 && laneManager.lanes[user.laneIndex + 1].occupant == null)
             {
                 user.SetLane(user.laneIndex + 1);
                 target.SetLane(user.laneIndex - 1);

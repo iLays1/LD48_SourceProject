@@ -2,28 +2,82 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FallingUnit : MonoBehaviour
 {
+    [HideInInspector]
+    public UnityEvent OnDamaged = new UnityEvent();
+    [HideInInspector]
+    public UnityEvent OnDeath = new UnityEvent();
+
+    public int hp;
+    public int attackPower;
+
     public int laneIndex;
-    int lastIndex;
+    public int lastIndex;
 
     protected LaneManager laneManager;
     protected Lane[] lanes { get { return laneManager.lanes; } }
 
-    private void Awake()
+    public UnitVisuals visuals;
+
+    ScreenShaker screenShaker;
+
+    protected virtual void Awake()
     {
+        HpSlider.Create(this);
+        screenShaker = FindObjectOfType<ScreenShaker>();
         laneManager = FindObjectOfType<LaneManager>();
+    }
+
+    private void Start()
+    {
         lastIndex = laneIndex;
         SetLane(laneIndex);
+        transform.position = new Vector3(laneManager.lanes[laneIndex].transform.position.x, 10, 0);
+    }
+
+    public virtual void TakeDamage(int damage)
+    {
+        if (visuals != null)
+            visuals.DamagedAnimation();
+
+        hp -= damage;
+
+        if(hp <= 0)
+        {
+            screenShaker.Shake(0.2f, 0.1f);
+            hp = 0;
+            Death();
+            return;
+        }
+
+        FadingText.Create(transform.position, damage.ToString());
+        screenShaker.Shake(0.1f, 0.05f);
+        OnDamaged.Invoke();
+    }
+
+    protected virtual void Death()
+    {
+        OnDeath.Invoke();
+        visuals.DeathAnimation();
+        transform.DOComplete();
+        Destroy(this);
     }
 
     public void MoveLeft()
     {
+        if (visuals != null)
+            visuals.FlipLeft();
+
         SetLane(laneIndex - 1);
     }
     public void MoveRight()
     {
+        if (visuals != null)
+            visuals.FlipRight();
+
         SetLane(laneIndex + 1);
     }
 

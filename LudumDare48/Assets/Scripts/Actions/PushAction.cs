@@ -13,18 +13,18 @@ public class PushAction : UnitAction
         //Hit wall
         if (dir == 1)
         {
-            if (user.laneIndex + 1 < laneManager.lanes.Length - 1)
+            if (user.laneIndex + 1 < laneManager.lanes.Length - 1 && laneManager.lanes[user.laneIndex + 2].occupant == null)
             {
                 target.SetLane(user.laneIndex + 2);
-                user.SetLane(user.laneIndex + 1);
+                //user.SetLane(user.laneIndex + 1);
             }
         }
         if (dir == -1)
         {
-            if(user.laneIndex - 1 > 0)
+            if(user.laneIndex - 1 > 0 && laneManager.lanes[user.laneIndex - 2].occupant == null)
             {
                 target.SetLane(user.laneIndex - 2);
-                user.SetLane(user.laneIndex - 1);
+                //user.SetLane(user.laneIndex - 1);
             }
         }
     }
