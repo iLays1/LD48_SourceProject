@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class FadingText : MonoBehaviour
 {
-    public static FadingText Create(Vector3 position, string text, float duration = 2.4f)
+    public static FadingText Create(Vector3 position, Transform parent, string text, float duration = 2.4f)
     {
         var go = (GameObject)Instantiate(Resources.Load("FadingText"));
-        
+        go.transform.SetParent(parent);
         go.transform.position = position;
         FadingText t = go.GetComponent<FadingText>();
         t.Initalize(text, Color.white, duration);

@@ -35,9 +35,15 @@ public class ThreatSpawner : MonoBehaviour
     }
     public void SpawnEnemies(int count)
     {
+        StartCoroutine(SpawnEnemiesCoroutine(count));
+    }
+    IEnumerator SpawnEnemiesCoroutine(int count)
+    {
+        yield return new WaitForSeconds(0.01f);//
+
         int[] arr = Enumerable.Range(0, laneManager.lanes.Length).ToArray();
         UtilityCode.Shuffle(arr);
-        
+
         for (int i = 0; i < count; i++)
         {
             if (laneManager.lanes[arr[i]].occupant != null)

@@ -14,6 +14,16 @@ public class SuperSwapAction : UnitAction
         var pLane = laneManager.lanes[ui];
         var tLane = laneManager.lanes[ti];
 
+        dir = target.laneIndex > user.laneIndex ? -1 : 1;
+        
+        if (dir == -1)
+            user.visuals.FlipLeft();
+        if (dir == 1)
+            user.visuals.FlipRight();
+
+        if (user.visuals != null)
+            user.visuals.AttackAnimation();
+
         pLane.occupant = null;
         tLane.occupant.SetLane(ui);
 

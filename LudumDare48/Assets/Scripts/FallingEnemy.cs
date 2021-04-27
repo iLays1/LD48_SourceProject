@@ -22,6 +22,8 @@ public class FallingEnemy : FallingUnit
         timerText.GetComponent<MeshRenderer>().sortingLayerName = "UI";
         player = FindObjectOfType<FallingPlayer>();
         TickManager.OnTick.AddListener(Tick);
+
+        timerText.text = actTimer.ToString();
     }
 
     void Tick()

@@ -60,7 +60,7 @@ public class FallingUnit : MonoBehaviour
         }
 
         hitSound.Play();
-        FadingText.Create(transform.position, damage.ToString());
+        FadingText.Create(transform.position, transform, damage.ToString());
         screenShaker.Shake(0.1f, 0.05f);
         OnDamaged.Invoke();
     }

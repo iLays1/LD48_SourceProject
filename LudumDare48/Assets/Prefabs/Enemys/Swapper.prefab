@@ -83,8 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   render: {fileID: 1781045684497049722}
-  idleSprite: {fileID: 21300000, guid: a7584b8a45b21c349986d0d9d2c66473, type: 3}
-  attackingSprite: {fileID: 21300000, guid: a52dedf86243d9d4fbd19b69c0b94d79, type: 3}
+  idleSprite: {fileID: 21300000, guid: 42b1234516863d4459e1b1db1e3adcca, type: 3}
+  attackingSprite: {fileID: 21300000, guid: 42b1234516863d4459e1b1db1e3adcca, type: 3}
 --- !u!114 &16122246736619460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,8 +691,8 @@ SpriteRenderer:
   m_SortingLayerID: 1655248917
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a7584b8a45b21c349986d0d9d2c66473, type: 3}
-  m_Color: {r: 0, g: 0.7035146, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 42b1234516863d4459e1b1db1e3adcca, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

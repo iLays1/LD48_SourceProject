@@ -296,7 +296,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  hp: 20
+  hp: 40
   attackPower: 3
   laneIndex: 4
   lastIndex: 0
