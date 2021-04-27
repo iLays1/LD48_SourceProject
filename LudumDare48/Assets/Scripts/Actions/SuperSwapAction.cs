@@ -11,8 +11,8 @@ public class SuperSwapAction : UnitAction
         int ui = user.laneIndex;
         int ti = target.laneIndex;
 
-        var pLane = laneManager.lanes[ui];
-        var tLane = laneManager.lanes[ti];
+        var pLane = LaneManager.instance.lanes[ui];
+        var tLane = LaneManager.instance.lanes[ti];
 
         dir = target.laneIndex > user.laneIndex ? -1 : 1;
         

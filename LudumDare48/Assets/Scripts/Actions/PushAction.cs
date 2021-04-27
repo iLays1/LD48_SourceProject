@@ -6,14 +6,14 @@ public class PushAction : UnitAction
 {
     public override void Do(FallingUnit user, int dir)
     {
-        var pLane = laneManager.lanes[user.laneIndex];
-        var tLane = laneManager.lanes[user.laneIndex + dir];
+        var pLane = LaneManager.instance.lanes[user.laneIndex];
+        var tLane = LaneManager.instance.lanes[user.laneIndex + dir];
         var target = tLane.occupant;
 
         //Hit wall
         if (dir == 1)
         {
-            if (user.laneIndex + 1 < laneManager.lanes.Length - 1 && laneManager.lanes[user.laneIndex + 2].occupant == null)
+            if (user.laneIndex + 1 < LaneManager.instance.lanes.Length - 1 && LaneManager.instance.lanes[user.laneIndex + 2].occupant == null)
             {
                 target.SetLane(user.laneIndex + 2);
                 //user.SetLane(user.laneIndex + 1);
@@ -21,7 +21,7 @@ public class PushAction : UnitAction
         }
         if (dir == -1)
         {
-            if(user.laneIndex - 1 > 0 && laneManager.lanes[user.laneIndex - 2].occupant == null)
+            if(user.laneIndex - 1 > 0 && LaneManager.instance.lanes[user.laneIndex - 2].occupant == null)
             {
                 target.SetLane(user.laneIndex - 2);
                 //user.SetLane(user.laneIndex - 1);

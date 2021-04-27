@@ -7,7 +7,7 @@ public class AttackAction : UnitAction
 {
     public override void Do(FallingUnit user, int dir)
     {
-        var target = laneManager.lanes[user.laneIndex + dir].occupant;
+        var target = LaneManager.instance.lanes[user.laneIndex + dir].occupant;
 
         user.transform.DOPunchPosition(new Vector3(dir,0,0) * 0.8f, 0.1f);
         target.TakeDamage(user.attackPower);

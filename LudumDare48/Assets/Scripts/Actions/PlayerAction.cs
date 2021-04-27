@@ -6,12 +6,10 @@ using UnityEngine.Events;
 public class PlayerAction : MonoBehaviour
 {
     public UnityEvent OnClick = new UnityEvent();
-    LaneManager laneManager;
     public UnitAction action;
 
     private void Awake()
     {
-        laneManager = FindObjectOfType<LaneManager>();
         action = GetComponent<UnitAction>();
     }
 
