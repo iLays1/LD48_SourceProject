@@ -26,7 +26,7 @@ public class ThreatSpawner : MonoBehaviour
     }
     IEnumerator SpawnHazardsCoroutine(int count)
     {
-        yield return new WaitForSeconds(0.005f);//
+        yield return new WaitForSeconds(0.02f);//
 
         int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();
         UtilityCode.Shuffle(arr);
@@ -45,7 +45,7 @@ public class ThreatSpawner : MonoBehaviour
     }
     IEnumerator SpawnEnemiesCoroutine(int count)
     {
-        yield return new WaitForSeconds(0.005f);
+        yield return new WaitForSeconds(0.02f);
 
         int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();
         UtilityCode.Shuffle(arr);

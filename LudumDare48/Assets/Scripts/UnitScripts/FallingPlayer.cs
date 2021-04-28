@@ -21,19 +21,32 @@ public class FallingPlayer : FallingUnit
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                MoveLeft();
-                TickAction();
+                LeftAction();
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                TickAction();
+                RightAction();
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
-                MoveRight();
-                TickAction();
+                StayAction();
             }
         }
+    }
+
+    public void LeftAction()
+    {
+        MoveLeft();
+        TickAction();
+    }
+    public void RightAction()
+    {
+        MoveRight();
+        TickAction();
+    }
+    public void StayAction()
+    {
+        TickAction();
     }
 
     void TickAction() => StartCoroutine(TickActionCoroutine());
@@ -89,11 +102,5 @@ public class FallingPlayer : FallingUnit
                 return;
             }
         }
-    }
-
-    protected override void Death()
-    {
-        Debug.Log("YOU LOSE");
-        base.Death();
     }
 }

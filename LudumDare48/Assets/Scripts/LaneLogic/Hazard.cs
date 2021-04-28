@@ -9,7 +9,7 @@ public class Hazard : MonoBehaviour
 
     public void Initalize()
     {
-        transform.position = targetLane.transform.position + (Vector3.down * 5f);
+        transform.position = targetLane.transform.position + (Vector3.down * 3f);
         TickManager.OnOutOfMoves.AddListener(Activate);
 
         targetLane.laneSpriteRend.color = targetLane.hazardColor;
@@ -19,7 +19,7 @@ public class Hazard : MonoBehaviour
     {
         Sequence s = DOTween.Sequence();
 
-        s.Append(transform.DOMoveY(15, 0.4f));
+        s.Append(transform.DOMoveY(20, 0.4f));
         s.AppendCallback(() => Destroy(gameObject));
 
         if (targetLane.occupant != null)

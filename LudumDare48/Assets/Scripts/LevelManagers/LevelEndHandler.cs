@@ -34,7 +34,7 @@ public class LevelEndHandler : MonoBehaviour
     }
     IEnumerator LoseCoroutine()
     {
-        Debug.Log("Lose");
+        Debug.Log("LOSE");
         yield return new WaitForSeconds(3f);
         //SceneManager.LoadScene(0);
     }
