@@ -71,24 +71,22 @@ public class FallingUnit : MonoBehaviour
         Destroy(this);
     }
 
-    public void MoveLeft()
+    public virtual void MoveLeft()
     {
         if (visuals != null)
             visuals.FlipLeft();
-
-        moveSound.Play();
-        SetLane(laneIndex - 1);
+        
+        SetLane(laneIndex - 1, true);
     }
-    public void MoveRight()
+    public virtual void MoveRight()
     {
         if (visuals != null)
             visuals.FlipRight();
 
-        moveSound.Play();
-        SetLane(laneIndex + 1);
+        SetLane(laneIndex + 1, true);
     }
 
-    public virtual void SetLane(int index)
+    public virtual void SetLane(int index, bool tick = false)
     {
         if (index < 0) index = 0;
         if (index > lanes.Length - 1) index = lanes.Length - 1;
@@ -99,6 +97,8 @@ public class FallingUnit : MonoBehaviour
             lanes[index].occupant = this;
 
             laneIndex = index;
+
+            moveSound.Play();
 
             transform.DOKill();
             transform.DOMove(LaneManager.instance.lanes[index].transform.position, 0.2f);

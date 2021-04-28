@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PullAction : UnitAction
 {
-    public override void Do(FallingUnit user, int dir)
+    public override bool Do(FallingUnit user, int dir)
     {
         var pLane = LaneManager.instance.lanes[user.laneIndex];
         var tLane = LaneManager.instance.lanes[user.laneIndex + dir];
@@ -16,6 +16,7 @@ public class PullAction : UnitAction
             {
                 user.SetLane(user.laneIndex - 1);
                 target.SetLane(user.laneIndex + 1);
+                return true;
             }
         }
         if (dir == -1)
@@ -24,7 +25,9 @@ public class PullAction : UnitAction
             {
                 user.SetLane(user.laneIndex + 1);
                 target.SetLane(user.laneIndex - 1);
+                return true;
             }
         }
+        return false;
     }
 }

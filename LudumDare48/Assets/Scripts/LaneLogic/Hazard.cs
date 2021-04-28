@@ -17,6 +17,12 @@ public class Hazard : MonoBehaviour
 
     void Activate()
     {
+        StartCoroutine(HazardCoroutine());
+    }
+    IEnumerator HazardCoroutine()
+    {
+        yield return new WaitForSeconds(0.001f);
+
         Sequence s = DOTween.Sequence();
 
         s.Append(transform.DOMoveY(20, 0.4f));

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class SkillSelection : MonoBehaviour
 {
-    public static PlayerAction selectedAction;
-    public PlayerAction[] skills;
+    public static PlayerActionButton selectedAction;
+    public PlayerActionButton[] skills;
     int selectionIndex = 0;
     public AudioSource source;
 

@@ -4,5 +4,7 @@ using UnityEngine;
 
 public abstract class UnitAction : MonoBehaviour
 {
-    public abstract void Do(FallingUnit user, int dir);
+    [HideInInspector]
+    public bool stationaryAction = false;
+    public abstract bool Do(FallingUnit user, int dir);
 }

@@ -7,24 +7,17 @@ using UnityEngine.Events;
 
 public class KillCounter : MonoBehaviour
 {
-    public UnityEvent OnWin = new UnityEvent();
-    public TextMeshProUGUI text;
+    public UnityEvent OnObjectiveComplete = new UnityEvent();
+    [SerializeField] TextMeshProUGUI text;
 
-    int kills = 0;
+    [SerializeField] int kills = 0;
     bool gameOver = false;
-    public int killsToWin = 25;
-    public FallingEnemy winTarget;
+    [SerializeField] int killsToWin = 25;
+    [SerializeField] FallingEnemy winTarget;
 
     [Space]
-    public FallingEnemy swapperPrefab;
-    public int killsPerSwapper = 8;
-
-    public FallingEnemy archerPrefab;
-    public int killsPerArcher = 0;
-
-    public FallingEnemy tankPrefab;
-    public int killsPerTank = 0;
-
+    [SerializeField] EnemySpawningParameters[] spawnParameters;
+    
     private void Awake()
     {
         if (winTarget != null)
@@ -36,7 +29,7 @@ public class KillCounter : MonoBehaviour
 
     void Win()
     {
-        OnWin.Invoke();
+        OnObjectiveComplete.Invoke();
         gameOver = true;
     }
 
@@ -55,17 +48,12 @@ public class KillCounter : MonoBehaviour
             return;
         }
 
-        if (killsPerSwapper > 0 && kills % killsPerSwapper == 0)
+        foreach(var param in spawnParameters)
         {
-            ThreatSpawner.SpawnEnemyPrefab(swapperPrefab);
-        }
-        if (killsPerArcher > 0 && kills % killsPerArcher == 0)
-        {
-            ThreatSpawner.SpawnEnemyPrefab(archerPrefab);
-        }
-        if (killsPerTank > 0 && kills % killsPerTank == 0)
-        {
-            ThreatSpawner.SpawnEnemyPrefab(tankPrefab);
+            if (param.killsPerSpawn > 0 && kills % param.killsPerSpawn == 0)
+            {
+                ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
+            }
         }
     }
 
@@ -79,5 +67,12 @@ public class KillCounter : MonoBehaviour
         {
             text.text = $"{killsToWin - kills}<size=30>\n kills to win";
         }
+    }
+
+    [System.Serializable]
+    public class EnemySpawningParameters
+    {
+        public FallingEnemy enemyPrefab;
+        public int killsPerSpawn = 8;
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttackAction : UnitAction
 {
-    public override void Do(FallingUnit user, int dir)
+    public override bool Do(FallingUnit user, int dir)
     {
         var target = LaneManager.instance.lanes[user.laneIndex + dir].occupant;
 
@@ -15,5 +15,7 @@ public class AttackAction : UnitAction
         user.attackSound.Play();
         if (user.visuals != null)
             user.visuals.AttackAnimation();
+        
+        return true;
     }
 }

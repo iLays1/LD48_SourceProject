@@ -72,6 +72,7 @@ public class ThreatSpawner : MonoBehaviour
             e.laneIndex = arr[i];
             e.lastIndex = arr[i];
             e.transform.position = new Vector3(LaneManager.instance.lanes[arr[i]].transform.position.x, 10, 0);
+            e.SetLane(arr[i]);
             break;
         }
     }

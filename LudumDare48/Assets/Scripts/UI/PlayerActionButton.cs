@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAction : MonoBehaviour
+public class PlayerActionButton : MonoBehaviour
 {
     public UnityEvent OnClick = new UnityEvent();
     public UnitAction action;
@@ -13,15 +13,19 @@ public class PlayerAction : MonoBehaviour
         action = GetComponent<UnitAction>();
     }
 
-    public void DoLeft(FallingUnit player)
+    public bool DoLeft(FallingUnit player)
     {
         if(action != null)
-            action.Do(player, -1);
+            return action.Do(player, -1);
+
+        return false;
     }
-    public void DoRight(FallingUnit player)
+    public bool DoRight(FallingUnit player)
     {
         if (action != null)
-            action.Do(player, 1);
+            return action.Do(player, 1);
+
+        return false;
     }
 
     private void OnMouseOver()

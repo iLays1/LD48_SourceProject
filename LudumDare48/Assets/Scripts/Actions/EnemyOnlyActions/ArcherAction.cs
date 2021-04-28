@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuperAttackAction : UnitAction
+public class ArcherAction : UnitAction
 {
-    public override void Do(FallingUnit user, int dir)
+    public override bool Do(FallingUnit user, int dir)
     {
         var target = FindObjectOfType<FallingPlayer>();
 
@@ -23,5 +23,7 @@ public class SuperAttackAction : UnitAction
         user.attackSound.Play();
         if (user.visuals != null)
             user.visuals.AttackAnimation();
+
+        return true;
     }
 }

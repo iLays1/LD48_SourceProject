@@ -25,25 +25,51 @@ public class FallingPlayer : FallingUnit
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                RightAction();
+                StayAction();
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
-                StayAction();
+                RightAction();
             }
         }
     }
 
     public void LeftAction()
     {
-        MoveLeft();
-        TickAction();
+        if(!SkillSelection.selectedAction.action.stationaryAction)
+        {
+            MoveLeft();
+        }
+        else
+        {
+            visuals.FlipLeft();
+            UseSkillLeft();
+        }
     }
     public void RightAction()
     {
-        MoveRight();
-        TickAction();
+        if (!SkillSelection.selectedAction.action.stationaryAction)
+        {
+            MoveRight();
+        }
+        else
+        {
+            visuals.FlipRight();
+            UseSkillRight();
+        }
     }
+
+    public void UseSkillLeft(bool tickless = false)
+    {
+        bool skillUsed = SkillSelection.selectedAction.DoLeft(this);
+        if (skillUsed && !tickless) TickAction();
+    }
+    public void UseSkillRight(bool tickless = false)
+    {
+        bool skillUsed = SkillSelection.selectedAction.DoRight(this);
+        if (skillUsed && !tickless) TickAction();
+    }
+
     public void StayAction()
     {
         TickAction();
@@ -56,8 +82,8 @@ public class FallingPlayer : FallingUnit
 
         OnAction.Invoke();
     }
-
-    public override void SetLane(int index)
+    
+    public override void SetLane(int index, bool tick = false)
     {
         if (index < 0) index = 0;
         if (index > lanes.Length - 1) index = lanes.Length - 1;
@@ -69,6 +95,10 @@ public class FallingPlayer : FallingUnit
 
             laneIndex = index;
 
+            moveSound.Play();
+
+            if(tick) TickAction();
+
             transform.DOKill();
             transform.DOMove(LaneManager.instance.lanes[index].transform.position, 0.2f);
         }
@@ -79,12 +109,12 @@ public class FallingPlayer : FallingUnit
             {
                 if (index < laneIndex)
                 {
-                    SkillSelection.selectedAction.DoLeft(this);
+                    UseSkillLeft();
                     return;
                 }
                 if (index > laneIndex)
                 {
-                    SkillSelection.selectedAction.DoRight(this);
+                    UseSkillRight();
                     return;
                 }
                 return;
