@@ -53,6 +53,7 @@ public class FallingUnit : MonoBehaviour
             deathSound.Play();
             screenShaker.Shake(0.2f, 0.1f);
             hp = 0;
+
             Death();
             return;
         }
@@ -63,11 +64,11 @@ public class FallingUnit : MonoBehaviour
         OnDamaged.Invoke();
     }
 
-    protected virtual void Death()
+    public virtual void Death()
     {
-        OnDeath.Invoke();
         visuals.DeathAnimation();
         transform.DOComplete();
+        OnDeath.Invoke();
         Destroy(this);
     }
 

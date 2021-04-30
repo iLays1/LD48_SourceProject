@@ -9,12 +9,12 @@ public class LevelEndHandler : MonoBehaviour
     public static UnityEvent OnLevelWin = new UnityEvent();
     public static UnityEvent OnLevelLose = new UnityEvent();
 
-    public KillCounter kCounter;
+    public LevelManager kCounter;
     FallingPlayer player;
 
     private void Awake()
     {
-        kCounter = FindObjectOfType<KillCounter>();
+        kCounter = FindObjectOfType<LevelManager>();
         kCounter.OnObjectiveComplete.AddListener(PlayerWin);
         player = FindObjectOfType<FallingPlayer>();
         player.OnDeath.AddListener(PlayerLose);

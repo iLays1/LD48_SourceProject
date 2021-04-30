@@ -56,7 +56,7 @@ public class ThreatSpawner : MonoBehaviour
         }
     }
 
-    public static void SpawnEnemyPrefab(FallingEnemy prefab)
+    public static FallingEnemy SpawnEnemyPrefab(FallingEnemy prefab)
     {
         int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();
         UtilityCode.Shuffle(arr);
@@ -73,7 +73,8 @@ public class ThreatSpawner : MonoBehaviour
             e.lastIndex = arr[i];
             e.transform.position = new Vector3(LaneManager.instance.lanes[arr[i]].transform.position.x, 10, 0);
             e.SetLane(arr[i]);
-            break;
+            return e;
         }
+        return null;
     }
 }

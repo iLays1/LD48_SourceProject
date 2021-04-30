@@ -31,13 +31,25 @@ public class FallingEnemy : FallingUnit
     {
         actTimer--;
 
-        if(actTimer <= 0)
+        FacePlayer();
+
+        if (actTimer <= 0)
         {
             actTimer = actSpeed;
             EnemyAct();
         }
 
         timerText.text = actTimer.ToString();
+    }
+
+    public void FacePlayer()
+    {
+        var dir = player.laneIndex > laneIndex ? 1 : -1;
+
+        if (dir == -1)
+            visuals.FlipLeft();
+        if (dir == 1)
+            visuals.FlipRight();
     }
 
     public virtual void EnemyAct() => StartCoroutine(EnemyActCoroutine());
@@ -53,7 +65,7 @@ public class FallingEnemy : FallingUnit
                 visuals.FlipLeft();
             if (lanes[laneIndex - 1].occupant != null && lanes[laneIndex - 1].occupant is FallingPlayer)
             {
-                attackAction.Do(this, -1);
+                attackAction.Do(this, - 1);
             }
             else
             {
@@ -67,7 +79,7 @@ public class FallingEnemy : FallingUnit
 
             if (lanes[laneIndex + 1].occupant != null && lanes[laneIndex + 1].occupant is FallingPlayer)
             {
-                attackAction.Do(this, +1);
+                attackAction.Do(this, + 1);
             }
             else
             {
@@ -76,8 +88,9 @@ public class FallingEnemy : FallingUnit
         }
     }
 
-    protected override void Death()
+    public override void Death()
     {
+        StopAllCoroutines();
         OnEnemyDeath.Invoke();
         Destroy(timerText.gameObject);
         base.Death();

@@ -21,7 +21,7 @@ public class RangedAttackAction : UnitAction
         int i = ui + dir;
         FallingUnit target = null;
         
-        while (i > 0 && i < lanes.Length - 1)
+        while (i >= 0 && i < lanes.Length)
         {
             if (lanes[i].occupant != null)
             {

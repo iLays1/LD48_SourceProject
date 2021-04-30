@@ -8,6 +8,7 @@ public class FallingPlayer : FallingUnit
 {
     public static UnityEvent OnAction = new UnityEvent();
     public bool isActive = true;
+    bool moving = false;
 
     protected override void Awake()
     {
@@ -36,7 +37,9 @@ public class FallingPlayer : FallingUnit
 
     public void LeftAction()
     {
-        if(!SkillSelection.selectedAction.action.stationaryAction)
+        if (moving) return;
+
+        if (!SkillSelection.selectedAction.action.stationaryAction)
         {
             MoveLeft();
         }
@@ -48,6 +51,8 @@ public class FallingPlayer : FallingUnit
     }
     public void RightAction()
     {
+        if (moving) return;
+
         if (!SkillSelection.selectedAction.action.stationaryAction)
         {
             MoveRight();
@@ -63,16 +68,33 @@ public class FallingPlayer : FallingUnit
     {
         bool skillUsed = SkillSelection.selectedAction.DoLeft(this);
         if (skillUsed && !tickless) TickAction();
+        else
+            transform.DOPunchPosition(Vector3.left * 0.5f, 0.1f);
     }
     public void UseSkillRight(bool tickless = false)
     {
         bool skillUsed = SkillSelection.selectedAction.DoRight(this);
         if (skillUsed && !tickless) TickAction();
+        else
+            transform.DOPunchPosition(Vector3.right * 0.5f, 0.1f);
     }
 
     public void StayAction()
     {
+        if (moving) return;
+
         TickAction();
+    }
+
+    public void LimitInputs()
+    {
+        StartCoroutine(LimitInputsCoroutine());
+    }
+    IEnumerator LimitInputsCoroutine()
+    {
+        moving = true;
+        yield return new WaitForSeconds(0.05f);
+        moving = false;
     }
 
     void TickAction() => StartCoroutine(TickActionCoroutine());
@@ -80,6 +102,7 @@ public class FallingPlayer : FallingUnit
     {
         yield return new WaitForEndOfFrame();
 
+        LimitInputs();
         OnAction.Invoke();
     }
     
