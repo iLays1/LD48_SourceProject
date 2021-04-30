@@ -31,42 +31,6 @@ public class LevelManager : MonoBehaviour
         SetText();
     }
 
-    public void SpawnBoss(int i)
-    {
-        var boss = Instantiate(bossPrefab);
-        winTarget = boss;
-        winTarget.OnDeath.AddListener(Win);
-        
-        var lanes = LaneManager.instance.lanes;
-        bool spotFound = false;
-
-        while (!spotFound)
-        {
-            if (lanes[i].occupant != null)
-            {
-                if (!(lanes[i].occupant is FallingPlayer))
-                {
-                    lanes[i].occupant.Death();
-                    lanes[i].occupant = null;
-                    spotFound = true;
-                }
-                else
-                {
-                    //is player
-                    i++;
-                }
-            }
-        }
-
-
-        boss.laneIndex = i;
-        boss.lastIndex = i;
-        boss.transform.position = new Vector3(lanes[i].transform.position.x, 10, 0);
-        boss.SetLane(i);
-
-        SetText();
-    }
-
     void OnKill()
     {
         kills++;
@@ -98,6 +62,45 @@ public class LevelManager : MonoBehaviour
                 ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
             }
         }
+    }
+
+    public void SpawnBoss(int i)
+    {
+        var boss = Instantiate(bossPrefab);
+        winTarget = boss;
+        winTarget.OnDeath.AddListener(Win);
+
+        var lanes = LaneManager.instance.lanes;
+        bool spotFound = false;
+
+        while (!spotFound)
+        {
+            if (lanes[i].occupant != null)
+            {
+                if (!(lanes[i].occupant is FallingPlayer))
+                {
+                    lanes[i].occupant.Death();
+                    lanes[i].occupant = null;
+                    spotFound = true;
+                }
+                else
+                {
+                    //is player
+                    i++;
+                }
+            }
+            else
+            {
+                spotFound = true;
+            }
+        }
+        
+        boss.laneIndex = i;
+        boss.lastIndex = i;
+        boss.transform.position = new Vector3(lanes[i].transform.position.x, 10, 0);
+        boss.SetLane(i);
+
+        SetText();
     }
 
     void Win()
