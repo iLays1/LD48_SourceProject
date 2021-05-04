@@ -9,13 +9,12 @@ public class LevelEndHandler : MonoBehaviour
     public static UnityEvent OnLevelWin = new UnityEvent();
     public static UnityEvent OnLevelLose = new UnityEvent();
 
-    public LevelManager kCounter;
+    public LevelManager levelManager;
     FallingPlayer player;
 
     private void Awake()
     {
-        kCounter = FindObjectOfType<LevelManager>();
-        kCounter.OnObjectiveComplete.AddListener(PlayerWin);
+        levelManager.OnObjectiveComplete.AddListener(PlayerWin);
         player = FindObjectOfType<FallingPlayer>();
         player.OnDeath.AddListener(PlayerLose);
     }
@@ -27,10 +26,14 @@ public class LevelEndHandler : MonoBehaviour
     IEnumerator WinCoroutine()
     {
         OnLevelWin.Invoke();
+        foreach(var e in FindObjectsOfType<FallingEnemy>())
+        {
+            e.Death();
+        }
         Destroy(player);
         Debug.Log("WIN");
-        yield return new WaitForSeconds(3f);
-        //SceneManager.LoadScene(0);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
     }
 
     void PlayerLose()
@@ -41,7 +44,7 @@ public class LevelEndHandler : MonoBehaviour
     {
         OnLevelLose.Invoke();
         Debug.Log("LOSE");
-        yield return new WaitForSeconds(3f);
-        //SceneManager.LoadScene(0);
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
     }
 }

@@ -6,12 +6,12 @@ using UnityEngine;
 public class Hazard : MonoBehaviour
 {
     public Lane targetLane;
-
+    public int damage = 10;
     public void Initalize()
     {
         transform.position = targetLane.transform.position + (Vector3.down * 2.5f);
         TickManager.OnOutOfMoves.AddListener(Activate);
-
+        LevelEndHandler.OnLevelWin.AddListener(DestroyHazard);
         targetLane.laneSpriteRend.color = targetLane.hazardColor;
     }
 
@@ -29,8 +29,14 @@ public class Hazard : MonoBehaviour
         s.AppendCallback(() => Destroy(gameObject));
 
         if (targetLane.occupant != null)
-            targetLane.occupant.TakeDamage(10);
+            targetLane.occupant.TakeDamage(damage);
 
         targetLane.laneSpriteRend.color = targetLane.safeColor;
+    }
+
+    public void DestroyHazard()
+    {
+        targetLane.laneSpriteRend.color = targetLane.safeColor;
+        Destroy(gameObject);
     }
 }

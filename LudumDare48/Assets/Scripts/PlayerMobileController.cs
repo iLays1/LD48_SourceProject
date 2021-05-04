@@ -5,44 +5,35 @@ using UnityEngine;
 public class PlayerMobileController : MonoBehaviour
 {
     public FallingPlayer player;
-    public float edgeDis = 10f;
-    Camera cam;
-    [HideInInspector]
     public bool isActive = true;
 
     private void Awake()
     {
-        cam = Camera.main;
         LevelEndHandler.OnLevelWin.AddListener(() => isActive = false);
+
+        MainMobileController.OnTapLeft.AddListener(Left);
+        MainMobileController.OnTapRight.AddListener(Right);
+        MainMobileController.OnDoubleTap.AddListener(DoubleTap);
     }
 
-    void Update()
+    private void Start()
+    {
+        player = FindObjectOfType<FallingPlayer>();
+    }
+
+    void Left()
     {
         if (!isActive) return;
-
-        if (Input.touchCount > 1)
-        {
-            Touch touch = Input.GetTouch(1);
-            if (touch.phase == TouchPhase.Began)
-            {
-                player.StayAction();
-            }
-            return;
-        }
-        if (Input.touchCount == 1)
-        {
-            Touch touch = Input.GetTouch(0);
-            Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-
-            Debug.Log(touchPos.x);
-            if(touch.phase == TouchPhase.Began)
-            {
-                if (touchPos.x < -edgeDis)
-                    player.LeftAction();
-                if (touchPos.x > edgeDis)
-                    player.RightAction();
-            }
-            return;
-        }
+        player.LeftAction();
+    }
+    void Right()
+    {
+        if (!isActive) return;
+        player.RightAction();
+    }
+    void DoubleTap()
+    {
+        if (!isActive) return;
+        player.StayAction();
     }
 }

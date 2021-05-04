@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int killsToWin = 25;
 
     [SerializeField] FallingEnemy bossPrefab;
+    [SerializeField] int bossStartPos = 1;
+
     FallingEnemy winTarget;
 
     [Space]
@@ -24,9 +26,12 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         FallingEnemy.OnEnemyDeath.AddListener(OnKill);
+    }
 
-        if(winTarget != null)
-            winTarget.OnDeath.AddListener(Win);
+    private void Start()
+    {
+        if (killsToWin <= 0)
+            SpawnBoss(bossStartPos);
 
         SetText();
     }
@@ -38,13 +43,23 @@ public class LevelManager : MonoBehaviour
 
         if (gameOver) return;
 
+        foreach (var param in spawnParameters)
+        {
+            if (param.killsPerSpawn > 0 && kills % param.killsPerSpawn == 0)
+            {
+                ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
+            }
+        }
+
         if (kills >= killsToWin && winTarget == null)
         {
             kills = killsToWin;
 
-            if(bossPrefab != null)
+            gameOver = true;
+
+            if (bossPrefab != null)
             {
-                SpawnBoss(5);
+                SpawnBoss(bossStartPos);
             }
             else
             {
@@ -53,14 +68,6 @@ public class LevelManager : MonoBehaviour
 
             SetText();
             return;
-        }
-
-        foreach(var param in spawnParameters)
-        {
-            if (param.killsPerSpawn > 0 && kills % param.killsPerSpawn == 0)
-            {
-                ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
-            }
         }
     }
 
@@ -105,8 +112,9 @@ public class LevelManager : MonoBehaviour
 
     void Win()
     {
-        OnObjectiveComplete.Invoke();
+        winTarget.OnDeath.RemoveListener(Win);
         gameOver = true;
+        OnObjectiveComplete.Invoke();
     }
 
     void SetText()

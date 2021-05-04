@@ -12,47 +12,60 @@ public class ThreatSpawner : MonoBehaviour
     public int hazardsPerOOMs;
     public int enemiesPerOOMs;
 
+    bool spawning = true;
+
     private void Awake()
     {
         TickManager.OnOutOfMoves.AddListener(() => SpawnHazards(hazardsPerOOMs));
         TickManager.OnOutOfMoves.AddListener(() => SpawnEnemies(enemiesPerOOMs));
         SpawnHazards(hazardsPerOOMs);
         SpawnEnemies(enemiesPerOOMs);
+
+        LevelEndHandler.OnLevelWin.AddListener(() => spawning = false);
+        LevelEndHandler.OnLevelLose.AddListener(() => spawning = false);
     }
 
     public void SpawnHazards(int count)
     {
+        if (!spawning) return;
         StartCoroutine(SpawnHazardsCoroutine(count));
     }
     IEnumerator SpawnHazardsCoroutine(int count)
     {
         yield return new WaitForSeconds(0.02f);//
 
-        int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();
-        UtilityCode.Shuffle(arr);
-
-        for (int i = 0; i < count; i++)
+        if (spawning)
         {
-            var haz = Instantiate(hazardPrefab);
-            haz.targetLane = LaneManager.instance.lanes[arr[i]];
-            haz.Initalize();
+            int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();
+            UtilityCode.Shuffle(arr);
+
+            for (int i = 0; i < count; i++)
+            {
+                var haz = Instantiate(hazardPrefab);
+                haz.targetLane = LaneManager.instance.lanes[arr[i]];
+                haz.Initalize();
+            }
         }
     }
 
     public void SpawnEnemies(int count)
     {
+        if (!spawning) return;
         StartCoroutine(SpawnEnemiesCoroutine(count));
     }
     IEnumerator SpawnEnemiesCoroutine(int count)
     {
         yield return new WaitForSeconds(0.02f);
 
-        int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();
-        UtilityCode.Shuffle(arr);
-
-        for (int i = 0; i < count; i++)
+        if (spawning)
         {
-            SpawnEnemyPrefab(enemyPrefab);
+            int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();
+            UtilityCode.Shuffle(arr);
+
+            for (int i = 0; i < count; i++)
+            {
+                SpawnEnemyPrefab(enemyPrefab);
+            }
         }
     }
 
@@ -73,6 +86,7 @@ public class ThreatSpawner : MonoBehaviour
             e.lastIndex = arr[i];
             e.transform.position = new Vector3(LaneManager.instance.lanes[arr[i]].transform.position.x, 10, 0);
             e.SetLane(arr[i]);
+            e.FacePlayer();
             return e;
         }
         return null;

@@ -4,24 +4,30 @@ using UnityEngine;
 using DG.Tweening;
 public class UnitVisuals : MonoBehaviour
 {
-    public SpriteRenderer render;
+    public SpriteRenderer renderer;
     public Sprite idleSprite;
     public Sprite attackingSprite;
     //public TrailRenderer trail;
     Color baseColor;
+    Animator anim;
+
+    [SerializeField] ParticleSystem deathParticle;
+    [SerializeField] ParticleSystem hitParticle;
+
     private void Awake()
     {
-        render.sprite = idleSprite;
-        baseColor = render.color;
+        renderer.sprite = idleSprite;
+        anim = renderer.GetComponent<Animator>();
+        baseColor = renderer.color;
     }
     
     public void FlipLeft()
     {
-        render.flipX = true;
+        renderer.flipX = true;
     }
     public void FlipRight()
     {
-        render.flipX = false;
+        renderer.flipX = false;
     }
 
     public void AttackAnimation()
@@ -30,9 +36,9 @@ public class UnitVisuals : MonoBehaviour
     }
     IEnumerator AttackAnimCoroutine()
     {
-        render.sprite = attackingSprite;
+        renderer.sprite = attackingSprite;
         yield return new WaitForSeconds(0.3f);
-        render.sprite = idleSprite;
+        renderer.sprite = idleSprite;
     }
 
     public void DamagedAnimation()
@@ -41,9 +47,11 @@ public class UnitVisuals : MonoBehaviour
     }
     IEnumerator DamagedAnimCoroutine()
     {
-        render.color = Color.red;
+        hitParticle.Play();
+
+        renderer.color = Color.red;
         yield return new WaitForSeconds(0.2f);
-        render.color = baseColor;
+        renderer.color = baseColor;
     }
     public void DeathAnimation()
     {
@@ -51,9 +59,13 @@ public class UnitVisuals : MonoBehaviour
     }
     IEnumerator DeathAnimCoroutine()
     {
-        render.DOFade(0f, 0.3f);
-        yield return new WaitForSeconds(0.3f);
-        render.DOKill();
+        Destroy(anim);
+        deathParticle.Play();
+        renderer.DOFade(0f, 1.5f);
+        renderer.transform.DOMoveY(10f, 3f);
+        renderer.transform.DORotate(new Vector3(0,0,360), 2f, RotateMode.FastBeyond360);
+        yield return new WaitForSeconds(3f);
+        renderer.DOKill();
         Destroy(gameObject);
     }
 }

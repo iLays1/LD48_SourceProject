@@ -8,6 +8,7 @@ public class FallingPlayer : FallingUnit
 {
     public static UnityEvent OnAction = new UnityEvent();
     public bool isActive = true;
+    public bool keyboardControls = true;
     bool moving = false;
 
     protected override void Awake()
@@ -18,7 +19,7 @@ public class FallingPlayer : FallingUnit
 
     private void Update()
     {
-        if(isActive)
+        if(isActive && keyboardControls)
         {
             if (Input.GetKeyDown(KeyCode.A))
             {

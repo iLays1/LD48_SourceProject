@@ -26,6 +26,9 @@ public class FallingUnit : MonoBehaviour
 
     public UnitVisuals visuals;
 
+    FadingText dmgText;
+    int dmg;
+
     ScreenShaker screenShaker;
 
     protected virtual void Awake()
@@ -47,11 +50,12 @@ public class FallingUnit : MonoBehaviour
             visuals.DamagedAnimation();
 
         hp -= damage;
+        DamageText(damage);
 
-        if(hp <= 0)
+        if (hp <= 0)
         {
             deathSound.Play();
-            screenShaker.Shake(0.2f, 0.1f);
+            screenShaker.Shake(0.25f, 0.2f);
             hp = 0;
 
             Death();
@@ -59,9 +63,28 @@ public class FallingUnit : MonoBehaviour
         }
 
         hitSound.Play();
-        FadingText.Create(transform.position, transform, damage.ToString());
-        screenShaker.Shake(0.1f, 0.05f);
+        screenShaker.Shake(0.15f, 0.1f);
         OnDamaged.Invoke();
+    }
+
+    void DamageText(int damage)
+    {
+        if (dmgText == null)
+        {
+            dmg = damage;
+            dmgText = FadingText.Create(transform.position + Vector3.up, Color.red, transform, dmg.ToString());
+            StartCoroutine(dmgTextCoroutine());
+        }
+        else
+        {
+            dmg += damage;
+            dmgText.StartAgain(dmg.ToString(), transform.position + Vector3.up);
+        }
+    }
+    IEnumerator dmgTextCoroutine()
+    {
+        yield return new WaitForSeconds(0.3f);
+        dmgText = null;
     }
 
     public virtual void Death()

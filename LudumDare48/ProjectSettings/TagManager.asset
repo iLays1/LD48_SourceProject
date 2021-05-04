@@ -47,15 +47,18 @@ TagManager:
   - name: Characters
     uniqueID: 1655248917
     locked: 0
-  - name: UI
+  - name: CombatUI
     uniqueID: 2255059471
     locked: 0
   - name: ForeGround
     uniqueID: 3052024725
     locked: 0
-  - name: UIer
+  - name: UI
     uniqueID: 3086540199
     locked: 0
-  - name: FadeIN
+  - name: FadeIn
     uniqueID: 1724560199
+    locked: 0
+  - name: TouchFeedback
+    uniqueID: 2051766429
     locked: 0
