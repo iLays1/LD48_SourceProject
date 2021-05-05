@@ -20,7 +20,7 @@ public class ArcherAction : UnitAction
 
         target.TakeDamage(user.attackPower);
 
-        user.attackSound.Play();
+        user.unitAudio?.attackSound.Play();
         if (user.visuals != null)
             user.visuals.AttackAnimation();
 

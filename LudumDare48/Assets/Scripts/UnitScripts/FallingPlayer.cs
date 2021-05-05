@@ -119,7 +119,7 @@ public class FallingPlayer : FallingUnit
 
             laneIndex = index;
 
-            moveSound.Play();
+            unitAudio?.moveSound.Play();
 
             if(tick) TickAction();
 

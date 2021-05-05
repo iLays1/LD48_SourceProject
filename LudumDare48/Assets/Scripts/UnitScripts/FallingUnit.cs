@@ -17,10 +17,7 @@ public class FallingUnit : MonoBehaviour
     public int laneIndex;
     public int lastIndex;
 
-    public AudioSource hitSound;
-    public AudioSource deathSound;
-    public AudioSource attackSound;
-    public AudioSource moveSound;
+    public UnitAudio unitAudio;
     
     protected Lane[] lanes { get { return LaneManager.instance.lanes; } }
 
@@ -37,7 +34,7 @@ public class FallingUnit : MonoBehaviour
         screenShaker = FindObjectOfType<ScreenShaker>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         lastIndex = laneIndex;
         SetLane(laneIndex);
@@ -54,7 +51,7 @@ public class FallingUnit : MonoBehaviour
 
         if (hp <= 0)
         {
-            deathSound.Play();
+            unitAudio?.deathSound.Play();
             screenShaker.Shake(0.25f, 0.2f);
             hp = 0;
 
@@ -62,7 +59,7 @@ public class FallingUnit : MonoBehaviour
             return;
         }
 
-        hitSound.Play();
+        unitAudio?.hitSound.Play();
         screenShaker.Shake(0.15f, 0.1f);
         OnDamaged.Invoke();
     }
@@ -122,7 +119,7 @@ public class FallingUnit : MonoBehaviour
 
             laneIndex = index;
 
-            moveSound.Play();
+            unitAudio?.moveSound.Play();
 
             transform.DOKill();
             transform.DOMove(LaneManager.instance.lanes[index].transform.position, 0.2f);

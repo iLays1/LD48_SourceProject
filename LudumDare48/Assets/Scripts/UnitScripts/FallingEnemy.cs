@@ -11,8 +11,10 @@ public class FallingEnemy : FallingUnit
 
     public TextMeshPro timerText;
     public UnitAction attackAction;
+
     public int actSpeed = 3;
-    int actTimer = 3;
+    protected int actTimer = 3;
+
     FallingPlayer player;
 
     protected override void Awake()
@@ -22,9 +24,16 @@ public class FallingEnemy : FallingUnit
         actTimer = actSpeed;
         timerText.GetComponent<MeshRenderer>().sortingLayerName = "UI";
         player = FindObjectOfType<FallingPlayer>();
-        TickManager.OnTick.AddListener(Tick);
 
         timerText.text = actTimer.ToString();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        TickManager.OnTick.AddListener(Tick);
+        actTimer = actSpeed;
     }
 
     void Tick()
@@ -57,9 +66,9 @@ public class FallingEnemy : FallingUnit
     {
         yield return new WaitForSeconds(0.03f); 
 
-        var r = (laneIndex < player.laneIndex) ? 1 : 0;
+        var playerDir = (laneIndex < player.laneIndex) ? 1 : 0;
         
-        if (r == 0)
+        if (playerDir == 0)
         {
             if (visuals != null)
                 visuals.FlipLeft();
@@ -72,7 +81,7 @@ public class FallingEnemy : FallingUnit
                 MoveLeft();
             }
         }
-        if (r == 1)
+        if (playerDir == 1)
         {
             if (visuals != null)
                 visuals.FlipRight();

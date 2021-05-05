@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     public UnityEvent OnObjectiveComplete = new UnityEvent();
-    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI killText;
 
     [SerializeField] int kills = 0;
     [SerializeField] int killsToWin = 25;
@@ -121,12 +121,12 @@ public class LevelManager : MonoBehaviour
     {
         if(winTarget != null)
         {
-            text.text = $"Kill the Boss!";
+            killText.text = $"Kill the Boss!";
         }
         else
         {
             if (kills > killsToWin) kills = killsToWin;
-            text.text = $"{killsToWin - kills}<size=30>\n kills to win";
+            killText.text = $"{killsToWin - kills}<size=30>\n kills to win";
         }
     }
 
