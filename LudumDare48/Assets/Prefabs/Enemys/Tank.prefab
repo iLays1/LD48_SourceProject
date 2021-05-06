@@ -180,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7573739446351128870}
-  - component: {fileID: 7573739446351128868}
+  - component: {fileID: 7602778362640258617}
   - component: {fileID: 8184623141712562942}
   - component: {fileID: 426388013543665788}
   m_Layer: 0
@@ -210,7 +210,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7573739446351128868
+--- !u!114 &7602778362640258617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7573739446351128869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2757f303718933a428822970e4685f13, type: 3}
+  m_Script: {fileID: 11500000, guid: f7d55096519cf874b8aa241a9761edbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnDamaged:
@@ -228,15 +228,17 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  hp: 60
-  attackPower: 5
-  laneIndex: 7
+  hp: 100
+  attackPower: 4
+  laneIndex: 0
   lastIndex: 0
   unitAudio: {fileID: 4588650378989544297}
   visuals: {fileID: 426388013543665788}
   timerText: {fileID: 2239191526007131676}
   attackAction: {fileID: 8184623141712562942}
-  actSpeed: 5
+  actSpeed: 6
+  chargeTimes: 3
+  chargeSpeed: 1
 --- !u!114 &8184623141712562942
 MonoBehaviour:
   m_ObjectHideFlags: 0

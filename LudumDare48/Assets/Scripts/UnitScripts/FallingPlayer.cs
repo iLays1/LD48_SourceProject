@@ -38,7 +38,7 @@ public class FallingPlayer : FallingUnit
 
     public void LeftAction()
     {
-        if (moving) return;
+        if (moving || !isActive) return;
 
         if (!SkillSelection.selectedAction.action.stationaryAction)
         {
@@ -52,7 +52,7 @@ public class FallingPlayer : FallingUnit
     }
     public void RightAction()
     {
-        if (moving) return;
+        if (moving || !isActive) return;
 
         if (!SkillSelection.selectedAction.action.stationaryAction)
         {
@@ -82,7 +82,7 @@ public class FallingPlayer : FallingUnit
 
     public void StayAction()
     {
-        if (moving) return;
+        if (moving || !isActive) return;
 
         TickAction();
     }

@@ -10,6 +10,7 @@ public class PlayerMobileController : MonoBehaviour
     private void Awake()
     {
         LevelEndHandler.OnLevelWin.AddListener(() => isActive = false);
+        LevelEndHandler.OnLevelLose.AddListener(() => isActive = false);
 
         MainMobileController.OnTapLeft.AddListener(Left);
         MainMobileController.OnTapRight.AddListener(Right);

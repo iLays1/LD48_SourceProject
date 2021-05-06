@@ -7,24 +7,41 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class ActionsOnKills
+    {
+        [HideInInspector]
+        public bool active = true;
+        public int killsTillAction;
+        public UnityEvent action;
+    }
+
     public UnityEvent OnObjectiveComplete = new UnityEvent();
     [SerializeField] TextMeshProUGUI killText;
 
+    [Space]
     [SerializeField] int kills = 0;
     [SerializeField] int killsToWin = 25;
 
+    [Space]
     [SerializeField] FallingEnemy bossPrefab;
     [SerializeField] int bossStartPos = 1;
 
     FallingEnemy winTarget;
 
     [Space]
-    [SerializeField] EnemySpawningParameters[] spawnParameters;
+    [SerializeField] EnemySpawnSet enemySet;
+    [SerializeField] ActionsOnKills[] actions;
 
+    ThreatSpawner threatSpawner;
     bool gameOver = false;
+
+    FallingPlayer player;
 
     private void Awake()
     {
+        player = FindObjectOfType<FallingPlayer>();
+        threatSpawner = GetComponent<ThreatSpawner>();
         FallingEnemy.OnEnemyDeath.AddListener(OnKill);
     }
 
@@ -43,11 +60,20 @@ public class LevelManager : MonoBehaviour
 
         if (gameOver) return;
 
-        foreach (var param in spawnParameters)
+        foreach (var param in enemySet.spawnParameters)
         {
             if (param.killsPerSpawn > 0 && kills % param.killsPerSpawn == 0)
             {
                 ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
+            }
+        }
+
+        foreach (var param in actions)
+        {
+            if (param.killsTillAction <= kills && !param.active)
+            {
+                param.active = false;
+                param.action.Invoke();
             }
         }
 
@@ -59,7 +85,7 @@ public class LevelManager : MonoBehaviour
 
             if (bossPrefab != null)
             {
-                SpawnBoss(bossStartPos);
+                SpawnBossSequence();
             }
             else
             {
@@ -69,6 +95,22 @@ public class LevelManager : MonoBehaviour
             SetText();
             return;
         }
+    }
+
+    public void SpawnBossSequence()
+    {
+        StartCoroutine(SpawnBossSequenceCoroutine());
+    }
+    IEnumerator SpawnBossSequenceCoroutine()
+    {
+        player.isActive = false;
+        yield return new WaitForSeconds(2f);
+
+        SpawnBoss(bossStartPos);
+
+        yield return new WaitForSeconds(0.3f);
+        player.isActive = true;
+
     }
 
     public void SpawnBoss(int i)
@@ -121,19 +163,17 @@ public class LevelManager : MonoBehaviour
     {
         if(winTarget != null)
         {
-            killText.text = $"Kill the Boss!";
+            killText.text = $"Kill the Boss";
         }
         else
         {
             if (kills > killsToWin) kills = killsToWin;
-            killText.text = $"{killsToWin - kills}<size=30>\n kills to win";
+            killText.text = $"{killsToWin - kills}<size=30>\n More";
         }
     }
 
-    [System.Serializable]
-    public class EnemySpawningParameters
+    public void ChangeSpawnParams(EnemySpawnSet enemySet)
     {
-        public FallingEnemy enemyPrefab;
-        public int killsPerSpawn = 8;
+        this.enemySet = enemySet;
     }
 }

@@ -25,6 +25,10 @@ public class ThreatSpawner : MonoBehaviour
         LevelEndHandler.OnLevelLose.AddListener(() => spawning = false);
     }
 
+    public void ChangeHazardsPerOOMs(int value) => hazardsPerOOMs = value;
+    public void ChangeEnemiesPerOOMs(int value) => enemiesPerOOMs = value;
+    public void ChangeBaseEnemy(FallingEnemy newEnemyPrefab) => enemyPrefab = newEnemyPrefab;
+    
     public void SpawnHazards(int count)
     {
         if (!spawning) return;

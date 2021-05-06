@@ -458,9 +458,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1478766752501434724}
-  - component: {fileID: 1478766752501434725}
-  - component: {fileID: 1478766752501434727}
   - component: {fileID: 1478766752501434726}
+  - component: {fileID: 1478766752501434727}
+  - component: {fileID: 1478766752501434725}
   - component: {fileID: 2931375615913844359}
   m_Layer: 0
   m_Name: CombatManager
@@ -485,36 +485,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1478766752501434725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478766752501434730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c922ffe50519eb348bdac5f2ae128889, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseTicksTillMove: 5
-  ticksTillMove: 1
---- !u!114 &1478766752501434727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478766752501434730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15ecd2da53a07f43b585678c0eb16b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hazardPrefab: {fileID: 7775057010209851721, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
-  enemyPrefab: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-  hazardsPerOOMs: 4
-  enemiesPerOOMs: 1
 --- !u!114 &1478766752501434726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,16 +502,82 @@ MonoBehaviour:
       m_Calls: []
   killText: {fileID: 1334768997}
   kills: 0
-  killsToWin: 50
-  bossPrefab: {fileID: 7573739446351128868, guid: 10c58292b18fea04a811f164f021b61d, type: 3}
+  killsToWin: 30
+  bossPrefab: {fileID: 7602778362640258617, guid: 10c58292b18fea04a811f164f021b61d, type: 3}
   bossStartPos: 1
-  spawnParameters:
-  - enemyPrefab: {fileID: 16122246736619483, guid: 5ff851c4246e0344f8e2ed209bd9f8ed, type: 3}
-    killsPerSpawn: 15
-  - enemyPrefab: {fileID: 5638659483292073992, guid: ef4e25fef78e045428ed52b87f51949f, type: 3}
-    killsPerSpawn: 4
-  - enemyPrefab: {fileID: 4530940068998594116, guid: bb4c2d745557cf14d9e3cb0883038ead, type: 3}
-    killsPerSpawn: 9
+  enemySet: {fileID: 11400000, guid: 036761d30fee66e45be72d91172c5370, type: 2}
+  actions:
+  - active: 0
+    killsTillAction: 30
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1478766752501434726}
+          m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+          m_MethodName: ChangeSpawnParams
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: de5646a1d108ff54f992f2b40c26c8c7, type: 2}
+            m_ObjectArgumentAssemblyTypeName: EnemySpawnSet, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1478766752501434727}
+          m_TargetAssemblyTypeName: ThreatSpawner, Assembly-CSharp
+          m_MethodName: ChangeEnemiesPerOOMs
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1478766752501434727}
+          m_TargetAssemblyTypeName: ThreatSpawner, Assembly-CSharp
+          m_MethodName: ChangeHazardsPerOOMs
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 5
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1478766752501434727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478766752501434730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15ecd2da53a07f43b585678c0eb16b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hazardPrefab: {fileID: 7775057010209851721, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+  enemyPrefab: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+  hazardsPerOOMs: 4
+  enemiesPerOOMs: 1
+--- !u!114 &1478766752501434725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478766752501434730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c922ffe50519eb348bdac5f2ae128889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseTicksTillMove: 5
+  ticksTillMove: 1
 --- !u!114 &2931375615913844359
 MonoBehaviour:
   m_ObjectHideFlags: 0
