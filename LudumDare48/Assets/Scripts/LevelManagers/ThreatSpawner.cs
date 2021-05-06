@@ -18,6 +18,7 @@ public class ThreatSpawner : MonoBehaviour
     {
         TickManager.OnOutOfMoves.AddListener(() => SpawnHazards(hazardsPerOOMs));
         TickManager.OnOutOfMoves.AddListener(() => SpawnEnemies(enemiesPerOOMs));
+
         SpawnHazards(hazardsPerOOMs);
         SpawnEnemies(enemiesPerOOMs);
 
@@ -36,7 +37,7 @@ public class ThreatSpawner : MonoBehaviour
     }
     IEnumerator SpawnHazardsCoroutine(int count)
     {
-        yield return new WaitForSeconds(0.02f);//
+        yield return new WaitForSeconds(0.02f);
 
         if (spawning)
         {

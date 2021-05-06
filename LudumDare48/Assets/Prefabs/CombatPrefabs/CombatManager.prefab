@@ -239,17 +239,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334768995}
-  m_LocalRotation: {x: 0, y: 0, z: 0.043619405, w: 0.9990483}
+  m_LocalRotation: {x: -0, y: -0, z: 0.016876824, w: 0.99985766}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2112929674}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 97.53003, y: -61.22998}
-  m_SizeDelta: {x: 177.54, y: 92.28}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.934}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -142.5, y: 99.3}
+  m_SizeDelta: {x: 118.38, y: 92.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1334768998
 CanvasRenderer:
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kill the Boss
+  m_text: Defeat the boss
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3620bc6afb3231347a74e8da003d1a8e, type: 2}
   m_sharedMaterial: {fileID: -6872381039190618424, guid: 3620bc6afb3231347a74e8da003d1a8e, type: 2}
@@ -306,8 +306,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.58
-  m_fontSizeBase: 36.58
+  m_fontSize: 25.54
+  m_fontSizeBase: 25.54
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -507,7 +507,48 @@ MonoBehaviour:
   bossStartPos: 1
   enemySet: {fileID: 11400000, guid: 036761d30fee66e45be72d91172c5370, type: 2}
   actions:
-  - active: 0
+  - active: 1
+    killsTillAction: 1
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1478766752501434727}
+          m_TargetAssemblyTypeName: ThreatSpawner, Assembly-CSharp
+          m_MethodName: ChangeEnemiesPerOOMs
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1478766752501434727}
+          m_TargetAssemblyTypeName: ThreatSpawner, Assembly-CSharp
+          m_MethodName: ChangeHazardsPerOOMs
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1478766752501434727}
+          m_TargetAssemblyTypeName: ThreatSpawner, Assembly-CSharp
+          m_MethodName: SpawnEnemies
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - active: 1
     killsTillAction: 30
     action:
       m_PersistentCalls:
@@ -543,11 +584,40 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 5
+            m_IntArgument: 6
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 0.44498223, b: 0, a: 1}
+    key2: {r: 1, g: 0, b: 0, a: 0}
+    key3: {r: 0.8113208, g: 0, b: 0.24790186, a: 0}
+    key4: {r: 1, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 47027
+    ctime2: 62135
+    ctime3: 65535
+    ctime4: 65535
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
 --- !u!114 &1478766752501434727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,8 +632,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazardPrefab: {fileID: 7775057010209851721, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
   enemyPrefab: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-  hazardsPerOOMs: 4
-  enemiesPerOOMs: 1
+  hazardsPerOOMs: 3
+  enemiesPerOOMs: 0
 --- !u!114 &1478766752501434725
 MonoBehaviour:
   m_ObjectHideFlags: 0

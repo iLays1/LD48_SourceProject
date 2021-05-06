@@ -38,6 +38,9 @@ public class LevelManager : MonoBehaviour
 
     FallingPlayer player;
 
+    [Space]
+    [SerializeField] Gradient textGradient;
+
     private void Awake()
     {
         player = FindObjectOfType<FallingPlayer>();
@@ -64,13 +67,13 @@ public class LevelManager : MonoBehaviour
         {
             if (param.killsPerSpawn > 0 && kills % param.killsPerSpawn == 0)
             {
-                ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
+                StartCoroutine(SpawnEnemyPrefabDelayedCoroutine(param));
             }
         }
 
         foreach (var param in actions)
         {
-            if (param.killsTillAction <= kills && !param.active)
+            if (param.killsTillAction <= kills && param.active)
             {
                 param.active = false;
                 param.action.Invoke();
@@ -95,6 +98,11 @@ public class LevelManager : MonoBehaviour
             SetText();
             return;
         }
+    }
+    IEnumerator SpawnEnemyPrefabDelayedCoroutine(EnemySpawnSet.EnemySpawningParameter param)
+    {
+        yield return new WaitForSeconds(0.02f);
+        ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
     }
 
     public void SpawnBossSequence()
@@ -163,12 +171,15 @@ public class LevelManager : MonoBehaviour
     {
         if(winTarget != null)
         {
-            killText.text = $"Kill the Boss";
+            killText.color = Color.white;
+            killText.text = $"Defeat the Boss";
         }
         else
         {
             if (kills > killsToWin) kills = killsToWin;
-            killText.text = $"{killsToWin - kills}<size=30>\n More";
+            killText.text = $"{killsToWin - kills}<size=20>\n Kills left";
+
+            killText.color = textGradient.Evaluate((float)kills/killsToWin);
         }
     }
 

@@ -33,7 +33,7 @@ public class LevelEndHandler : MonoBehaviour
         Destroy(player);
 
         Debug.Log("WIN");
-        FadingText.Create(Vector3.zero, Color.yellow, null, "WIN", 6f);
+        FadingText.Create(Vector3.zero, Color.yellow, null, "WIN", 5f);
 
         yield return new WaitForSeconds(6f);
         SceneManager.LoadScene(0);
@@ -48,9 +48,9 @@ public class LevelEndHandler : MonoBehaviour
         OnLevelLose.Invoke();
 
         Debug.Log("LOSE");
-        FadingText.Create(Vector3.zero, Color.grey, null, "Failure", 6f);
+        FadingText.Create(Vector3.zero, Color.grey, null, "Failure", 5f);
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(0);
     }
 }

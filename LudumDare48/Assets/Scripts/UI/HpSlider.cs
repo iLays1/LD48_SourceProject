@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class HpSlider : MonoBehaviour
     public FallingUnit unit;
     public Slider slider;
     public Vector3 offset;
+    public TextMeshProUGUI text;
 
     private void Awake()
     {
@@ -49,5 +51,6 @@ public class HpSlider : MonoBehaviour
     public void UpdateUI()
     {
         slider.value = unit.hp;
+        text.text = unit.hp.ToString();
     }
 }

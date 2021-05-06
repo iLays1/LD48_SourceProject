@@ -60,7 +60,7 @@ public class MainMobileController : MonoBehaviour
     IEnumerator CancelableActionCoroutine(UnityAction action)
     {
         actionValid = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.075f);
         if(actionValid) action.Invoke();
     }
 }
