@@ -26,7 +26,7 @@ public class FallingUnit : MonoBehaviour
     FadingText dmgText;
     int dmg;
 
-    ScreenShaker screenShaker;
+    protected ScreenShaker screenShaker;
 
     protected virtual void Awake()
     {
@@ -52,7 +52,7 @@ public class FallingUnit : MonoBehaviour
         if (hp <= 0)
         {
             unitAudio?.deathSound.Play();
-            screenShaker.Shake(0.25f, 0.2f);
+            screenShaker.Shake(0.2f, 0.2f);
             hp = 0;
 
             Death();
@@ -60,7 +60,7 @@ public class FallingUnit : MonoBehaviour
         }
 
         unitAudio?.hitSound.Play();
-        screenShaker.Shake(0.15f, 0.1f);
+        screenShaker.Shake(0.10f, 0.08f);
         OnDamaged.Invoke();
     }
 

@@ -12,6 +12,9 @@ public class ThreatSpawner : MonoBehaviour
     public int hazardsPerOOMs;
     public int enemiesPerOOMs;
 
+    public int maxPopulation = 4;
+    int population = 0;
+
     bool spawning = true;
 
     private void Awake()
@@ -69,7 +72,12 @@ public class ThreatSpawner : MonoBehaviour
 
             for (int i = 0; i < count; i++)
             {
-                SpawnEnemyPrefab(enemyPrefab);
+                if(population < maxPopulation)
+                {
+                    population++;
+                    var e = SpawnEnemyPrefab(enemyPrefab);
+                    e.OnDeath.AddListener(() => population--);
+                }
             }
         }
     }

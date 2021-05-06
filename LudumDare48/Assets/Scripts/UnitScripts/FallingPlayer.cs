@@ -13,7 +13,7 @@ public class FallingPlayer : FallingUnit
 
     protected override void Awake()
     {
-        base.Awake();
+        screenShaker = FindObjectOfType<ScreenShaker>();
         //TickManager.OnOutOfMoves.AddListener(() => isActive = false);
     }
 

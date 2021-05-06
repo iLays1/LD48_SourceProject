@@ -34,6 +34,7 @@ public class FallingEnemy : FallingUnit
 
         TickManager.OnTick.AddListener(Tick);
         actTimer = actSpeed;
+        FacePlayer();
     }
 
     void Tick()
