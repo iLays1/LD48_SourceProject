@@ -94,7 +94,7 @@ public class ThreatSpawner : MonoBehaviour
                 continue;
             }
 
-            var e = Instantiate(prefab);
+            FallingEnemy e = Instantiate(prefab);
             e.laneIndex = arr[i];
             e.lastIndex = arr[i];
             e.transform.position = new Vector3(LaneManager.instance.lanes[arr[i]].transform.position.x, 10, 0);

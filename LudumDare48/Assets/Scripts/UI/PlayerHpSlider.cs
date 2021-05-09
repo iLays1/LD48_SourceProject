@@ -17,7 +17,7 @@ public class PlayerHpSlider : MonoBehaviour
         slider = GetComponent<Slider>();
         
         unit.OnDamaged.AddListener(UpdateUI);
-        unit.OnDeath.AddListener(() => Destroy(gameObject));
+        unit.OnDeath.AddListener(() => UpdateUIToZero());
 
         slider.maxValue = unit.hp;
         UpdateUI();
@@ -27,5 +27,10 @@ public class PlayerHpSlider : MonoBehaviour
     {
         slider.value = unit.hp;
         text.text = unit.hp.ToString();
+    }
+    void UpdateUIToZero()
+    {
+        slider.value = 0;
+        text.text = "Dead";
     }
 }
