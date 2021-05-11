@@ -22,21 +22,19 @@ public class LevelManager : MonoBehaviour
     [Space]
     public int kills = 0;
     public int killsToWin = 25;
+    [SerializeField] EnemySpawnSet enemySet;
+
+    [HideInInspector] public FallingEnemy winTarget;
 
     [Space]
     [SerializeField] FallingEnemy bossPrefab;
     [SerializeField] int bossStartPos = 1;
-
-    [HideInInspector]
-    public FallingEnemy winTarget;
-
+    
     [Space]
-    [SerializeField] EnemySpawnSet enemySet;
     [SerializeField] ActionsOnKills[] actions;
 
     ThreatSpawner threatSpawner;
     bool gameOver = false;
-
     FallingPlayer player;
 
     private void Awake()

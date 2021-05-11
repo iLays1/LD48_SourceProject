@@ -175,10 +175,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7775057010209851720}
-  - component: {fileID: 7775057010209851721}
+  - component: {fileID: 6249552591449279406}
   - component: {fileID: 678679114}
   m_Layer: 0
-  m_Name: Hazard
+  m_Name: HealHazard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7775057010209851721
+--- !u!114 &6249552591449279406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,12 +209,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7775057010209851726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe15d4a3d9edebc4b841da6a18e1d84b, type: 3}
+  m_Script: {fileID: 11500000, guid: fd700b107ec39034cae05b26c94fb634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetLane: {fileID: 0}
-  hazardColor: {r: 1, g: 0, b: 0, a: 0.15686275}
-  damage: 10
+  hazardColor: {r: 0.38904375, g: 1, b: 0.3443396, a: 0.24705882}
+  amount: 4
 --- !u!95 &678679114
 Animator:
   serializedVersion: 3

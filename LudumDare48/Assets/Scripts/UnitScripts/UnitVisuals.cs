@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class UnitVisuals : MonoBehaviour
 {
-    public SpriteRenderer renderer;
+    public SpriteRenderer rend;
     public Sprite idleSprite;
     public Sprite attackingSprite;
     //public TrailRenderer trail;
@@ -16,29 +16,32 @@ public class UnitVisuals : MonoBehaviour
 
     private void Awake()
     {
-        renderer.sprite = idleSprite;
-        anim = renderer.GetComponent<Animator>();
-        baseColor = renderer.color;
+        if (rend == null) rend = GetComponentInChildren<SpriteRenderer>();
+
+        rend.sprite = idleSprite;
+        anim = rend.GetComponent<Animator>();
+        baseColor = rend.color;
     }
     
     public void FlipLeft()
     {
-        renderer.flipX = true;
+        rend.flipX = true;
     }
     public void FlipRight()
     {
-        renderer.flipX = false;
+        rend.flipX = false;
     }
 
     public void AttackAnimation()
     {
+        StopCoroutine(AttackAnimCoroutine());
         StartCoroutine(AttackAnimCoroutine());
     }
     IEnumerator AttackAnimCoroutine()
     {
-        renderer.sprite = attackingSprite;
+        rend.sprite = attackingSprite;
         yield return new WaitForSeconds(0.3f);
-        renderer.sprite = idleSprite;
+        rend.sprite = idleSprite;
     }
 
     public void DamagedAnimation()
@@ -49,9 +52,9 @@ public class UnitVisuals : MonoBehaviour
     {
         hitParticle.Play();
 
-        renderer.color = Color.red;
+        rend.color = Color.red;
         yield return new WaitForSeconds(0.2f);
-        renderer.color = baseColor;
+        rend.color = baseColor;
     }
     public void DeathAnimation()
     {
@@ -61,11 +64,11 @@ public class UnitVisuals : MonoBehaviour
     {
         Destroy(anim);
         deathParticle.Play();
-        renderer.DOFade(0f, 1.5f);
-        renderer.transform.DOMoveY(10f, 3f);
-        renderer.transform.DORotate(new Vector3(0,0,360), 2f, RotateMode.FastBeyond360);
+        rend.DOFade(0f, 1.5f);
+        rend.transform.DOMoveY(10f, 3f);
+        rend.transform.DORotate(new Vector3(0,0,360), 2f, RotateMode.FastBeyond360);
         yield return new WaitForSeconds(3f);
-        renderer.DOKill();
+        rend.DOKill();
         Destroy(gameObject);
     }
 }

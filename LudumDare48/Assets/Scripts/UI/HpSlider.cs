@@ -15,10 +15,11 @@ public class HpSlider : MonoBehaviour
 
         hpSlider.offset = Vector3.down;
         hpSlider.unit = unit;
-        hpSlider.slider.maxValue = unit.hp;
+        hpSlider.slider.maxValue = unit.maxHp;
+        hpSlider.slider.value = unit.hp;
         hpSlider.UpdateUI();
 
-        unit.OnDamaged.AddListener(hpSlider.UpdateUI);
+        unit.OnHpChange.AddListener(hpSlider.UpdateUI);
         unit.OnDeath.AddListener(() => Destroy(hpSlider.gameObject));
         return hpSlider;
     }
@@ -50,6 +51,7 @@ public class HpSlider : MonoBehaviour
 
     public void UpdateUI()
     {
+        slider.maxValue = unit.maxHp;
         slider.value = unit.hp;
         text.text = unit.hp.ToString();
     }

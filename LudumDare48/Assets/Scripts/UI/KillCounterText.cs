@@ -23,7 +23,7 @@ public class KillCounterText : MonoBehaviour
         if (lm.winTarget != null)
         {
             text.color = Color.white;
-            text.text = $"Defeat the Boss";
+            text.text = $"Defeat the Elite";
         }
         else
         {

@@ -16,17 +16,20 @@ public class PlayerHpSlider : MonoBehaviour
 
         slider = GetComponent<Slider>();
         
-        unit.OnDamaged.AddListener(UpdateUI);
+        unit.OnHpChange.AddListener(UpdateUI);
         unit.OnDeath.AddListener(() => UpdateUIToZero());
 
-        slider.maxValue = unit.hp;
+        slider.maxValue = unit.maxHp;
+        slider.value = unit.hp;
+
         UpdateUI();
     }
 
     public void UpdateUI()
     {
+        slider.maxValue = unit.maxHp;
         slider.value = unit.hp;
-        text.text = unit.hp.ToString();
+        text.text = $"{unit.hp}/{unit.maxHp}";
     }
     void UpdateUIToZero()
     {

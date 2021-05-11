@@ -57,8 +57,11 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  maxHp: 12
   hp: 12
   attackPower: 2
+  defense: 0
+  speed: 8
   laneIndex: 8
   lastIndex: 0
   unitAudio: {fileID: 3414739720826038596}

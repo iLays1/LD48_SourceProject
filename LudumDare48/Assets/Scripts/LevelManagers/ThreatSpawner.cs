@@ -19,8 +19,8 @@ public class ThreatSpawner : MonoBehaviour
 
     private void Awake()
     {
-        TickManager.OnOutOfMoves.AddListener(() => SpawnHazards(hazardsPerOOMs));
-        TickManager.OnOutOfMoves.AddListener(() => SpawnEnemies(enemiesPerOOMs));
+        TickManager.ActivateHazards.AddListener(() => SpawnHazards(hazardsPerOOMs));
+        TickManager.ActivateHazards.AddListener(() => SpawnEnemies(enemiesPerOOMs));
 
         SpawnHazards(hazardsPerOOMs);
         SpawnEnemies(enemiesPerOOMs);

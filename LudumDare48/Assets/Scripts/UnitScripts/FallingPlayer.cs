@@ -83,7 +83,7 @@ public class FallingPlayer : FallingUnit
     public void StayAction()
     {
         if (moving || !isActive) return;
-
+        
         TickAction();
     }
 
@@ -114,7 +114,7 @@ public class FallingPlayer : FallingUnit
 
         if (lanes[index].occupant == null)
         {
-            lanes[laneIndex].occupant = null;
+            myLane.occupant = null;
             lanes[index].occupant = this;
 
             laneIndex = index;
@@ -124,7 +124,7 @@ public class FallingPlayer : FallingUnit
             if(tick) TickAction();
 
             transform.DOKill();
-            transform.DOMove(LaneManager.instance.lanes[index].transform.position, 0.2f);
+            transform.DOMove(myLane.transform.position, 0.2f);
         }
         else
         {

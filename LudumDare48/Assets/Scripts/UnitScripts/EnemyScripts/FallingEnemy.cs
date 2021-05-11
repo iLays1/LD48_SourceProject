@@ -12,6 +12,7 @@ public class FallingEnemy : FallingUnit
     public TextMeshPro timerText;
     public UnitAction attackAction;
 
+    [HideInInspector]
     public int actSpeed = 3;
     protected int actTimer = 3;
 
@@ -21,9 +22,12 @@ public class FallingEnemy : FallingUnit
     {
         base.Awake();
 
-        actTimer = actSpeed;
         timerText.GetComponent<MeshRenderer>().sortingLayerName = "UI";
         player = FindObjectOfType<FallingPlayer>();
+
+        actSpeed = speed + player.speed;
+        if (actSpeed < 1) actSpeed = 1;
+        actTimer = actSpeed;
 
         timerText.text = actTimer.ToString();
     }

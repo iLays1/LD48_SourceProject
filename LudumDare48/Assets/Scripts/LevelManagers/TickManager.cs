@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class TickManager : MonoBehaviour
 {
     public static UnityEvent OnTick = new UnityEvent();
-    public static UnityEvent OnOutOfMoves = new UnityEvent();
+    public static UnityEvent ActivateHazards = new UnityEvent();
 
     public int baseTicksTillMove = 5;
     public int ticksTillMove = 0;
@@ -28,7 +28,7 @@ public class TickManager : MonoBehaviour
         if (ticksTillMove <= 0)
         {
             ticksTillMove = baseTicksTillMove;
-            OnOutOfMoves.Invoke();
+            ActivateHazards.Invoke();
         }
 
         OnTick.Invoke();

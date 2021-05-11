@@ -6,6 +6,5 @@ public class Lane : MonoBehaviour
 {
     public FallingUnit occupant;
     public SpriteRenderer laneSpriteRend;
-    public Color hazardColor;
     public Color safeColor;
 }

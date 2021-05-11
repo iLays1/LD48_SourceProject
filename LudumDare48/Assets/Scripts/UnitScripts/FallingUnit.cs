@@ -6,30 +6,34 @@ using UnityEngine.Events;
 
 public class FallingUnit : MonoBehaviour
 {
-    [HideInInspector]
-    public UnityEvent OnDamaged = new UnityEvent();
-    [HideInInspector]
-    public UnityEvent OnDeath = new UnityEvent();
+    [HideInInspector] public UnityEvent OnHpChange = new UnityEvent();
+    [HideInInspector] public UnityEvent OnDeath = new UnityEvent();
 
-    public int hp;
+    protected Lane[] lanes { get { return LaneManager.instance.lanes; } }
+    public Lane myLane { get { return LaneManager.instance.lanes[laneIndex]; } }
+    protected ScreenShaker screenShaker;
+
+    [Header("Stats")]
+    public int maxHp;
     public int attackPower;
+    public int defense;
+    public int speed;
 
+    [HideInInspector] public int hp;
+
+    [Space]
     public int laneIndex;
-    public int lastIndex;
+    [HideInInspector] public int lastIndex;
 
     public UnitAudio unitAudio;
-    
-    protected Lane[] lanes { get { return LaneManager.instance.lanes; } }
-
     public UnitVisuals visuals;
 
     FadingText dmgText;
     int dmg;
-
-    protected ScreenShaker screenShaker;
-
+    
     protected virtual void Awake()
     {
+        hp = maxHp;
         HpSlider.Create(this);
         screenShaker = FindObjectOfType<ScreenShaker>();
     }
@@ -38,7 +42,19 @@ public class FallingUnit : MonoBehaviour
     {
         lastIndex = laneIndex;
         SetLane(laneIndex);
-        transform.position = new Vector3(LaneManager.instance.lanes[laneIndex].transform.position.x, 10, 0);
+        transform.position = new Vector3(myLane.transform.position.x, 10, 0);
+    }
+
+    public virtual void Heal(int amount)
+    {
+        hp += amount;
+        FadingText.Create(transform.position + Vector3.up, Color.green, transform, amount.ToString());
+
+        if (hp > maxHp)
+            hp = maxHp;
+
+        //unitAudio?.healSound.Play();
+        OnHpChange.Invoke();
     }
 
     public virtual void TakeDamage(int damage)
@@ -61,7 +77,7 @@ public class FallingUnit : MonoBehaviour
 
         unitAudio?.hitSound.Play();
         screenShaker.Shake(0.10f, 0.08f);
-        OnDamaged.Invoke();
+        OnHpChange.Invoke();
     }
 
     void DamageText(int damage)
@@ -114,7 +130,7 @@ public class FallingUnit : MonoBehaviour
 
         if (lanes[index].occupant == null)
         {
-            lanes[laneIndex].occupant = null;
+            myLane.occupant = null;
             lanes[index].occupant = this;
 
             laneIndex = index;
@@ -122,7 +138,7 @@ public class FallingUnit : MonoBehaviour
             unitAudio?.moveSound.Play();
 
             transform.DOKill();
-            transform.DOMove(LaneManager.instance.lanes[index].transform.position, 0.2f);
+            transform.DOMove(myLane.transform.position, 0.2f);
         }
         else
         {

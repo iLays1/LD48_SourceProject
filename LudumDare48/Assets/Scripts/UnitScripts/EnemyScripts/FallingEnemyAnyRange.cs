@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingEnemySwapper : FallingEnemy
+public class FallingEnemyAnyRange : FallingEnemy
 {
     FallingPlayer p;
 
