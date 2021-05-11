@@ -17,17 +17,18 @@ public class LevelManager : MonoBehaviour
     }
 
     public UnityEvent OnObjectiveComplete = new UnityEvent();
-    [SerializeField] TextMeshProUGUI killText;
+    public UnityEvent OnUpdateUI = new UnityEvent();
 
     [Space]
-    [SerializeField] int kills = 0;
-    [SerializeField] int killsToWin = 25;
+    public int kills = 0;
+    public int killsToWin = 25;
 
     [Space]
     [SerializeField] FallingEnemy bossPrefab;
     [SerializeField] int bossStartPos = 1;
 
-    FallingEnemy winTarget;
+    [HideInInspector]
+    public FallingEnemy winTarget;
 
     [Space]
     [SerializeField] EnemySpawnSet enemySet;
@@ -37,9 +38,6 @@ public class LevelManager : MonoBehaviour
     bool gameOver = false;
 
     FallingPlayer player;
-
-    [Space]
-    [SerializeField] Gradient textGradient;
 
     private void Awake()
     {
@@ -53,13 +51,13 @@ public class LevelManager : MonoBehaviour
         if (killsToWin <= 0)
             SpawnBoss(bossStartPos);
 
-        SetText();
+        UpdateUI();
     }
 
     void OnKill()
     {
         kills++;
-        SetText();
+        UpdateUI();
 
         if (gameOver) return;
 
@@ -95,7 +93,7 @@ public class LevelManager : MonoBehaviour
                 Win();
             }
 
-            SetText();
+            UpdateUI();
             return;
         }
     }
@@ -157,7 +155,12 @@ public class LevelManager : MonoBehaviour
         boss.transform.position = new Vector3(lanes[i].transform.position.x, 10, 0);
         boss.SetLane(i);
 
-        SetText();
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        OnUpdateUI.Invoke();
     }
 
     void Win()
@@ -166,23 +169,7 @@ public class LevelManager : MonoBehaviour
         gameOver = true;
         OnObjectiveComplete.Invoke();
     }
-
-    void SetText()
-    {
-        if(winTarget != null)
-        {
-            killText.color = Color.white;
-            killText.text = $"Defeat the Boss";
-        }
-        else
-        {
-            if (kills > killsToWin) kills = killsToWin;
-            killText.text = $"{killsToWin - kills}<size=20>\n Kills left";
-
-            killText.color = textGradient.Evaluate((float)kills/killsToWin);
-        }
-    }
-
+    
     public void ChangeSpawnParams(EnemySpawnSet enemySet)
     {
         this.enemySet = enemySet;
