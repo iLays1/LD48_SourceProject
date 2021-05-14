@@ -153,6 +153,8 @@ public class LevelManager : MonoBehaviour
         boss.transform.position = new Vector3(lanes[i].transform.position.x, 10, 0);
         boss.SetLane(i);
 
+        //boss.customDeath = true;
+
         UpdateUI();
     }
 

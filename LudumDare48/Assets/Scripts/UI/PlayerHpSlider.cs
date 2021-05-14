@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,21 +16,21 @@ public class PlayerHpSlider : MonoBehaviour
         if (unit == null) unit = FindObjectOfType<FallingPlayer>();
 
         slider = GetComponent<Slider>();
-        
+
         unit.OnHpChange.AddListener(UpdateUI);
         unit.OnDeath.AddListener(() => UpdateUIToZero());
 
         slider.maxValue = unit.maxHp;
         slider.value = unit.hp;
-
+        
         UpdateUI();
     }
-
+    
     public void UpdateUI()
     {
         slider.maxValue = unit.maxHp;
         slider.value = unit.hp;
-        text.text = $"{unit.hp}/{unit.maxHp}";
+        text.text = $"Hp {unit.hp}/{unit.maxHp}";
     }
     void UpdateUIToZero()
     {

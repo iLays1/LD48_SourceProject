@@ -26,7 +26,6 @@ public class ThreatSpawner : MonoBehaviour
         SpawnEnemies(enemiesPerOOMs);
 
         LevelEndHandler.OnLevelWin.AddListener(() => spawning = false);
-        LevelEndHandler.OnLevelLose.AddListener(() => spawning = false);
     }
 
     public void ChangeHazardsPerOOMs(int value) => hazardsPerOOMs = value;
@@ -82,6 +81,11 @@ public class ThreatSpawner : MonoBehaviour
         }
     }
 
+    //this is for buttons and UnityEvents
+    public void SpawnSpecificEnemy(FallingEnemy prefab)
+    {
+        SpawnEnemyPrefab(prefab);
+    }
     public static FallingEnemy SpawnEnemyPrefab(FallingEnemy prefab)
     {
         int[] arr = Enumerable.Range(0, LaneManager.instance.lanes.Length).ToArray();

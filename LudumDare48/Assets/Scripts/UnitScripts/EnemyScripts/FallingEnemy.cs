@@ -18,6 +18,9 @@ public class FallingEnemy : FallingUnit
 
     FallingPlayer player;
 
+    [HideInInspector]
+    public bool customDeath = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -107,6 +110,14 @@ public class FallingEnemy : FallingUnit
         StopAllCoroutines();
         OnEnemyDeath.Invoke();
         Destroy(timerText.gameObject);
+
+        if (customDeath)
+        {
+            transform.DOComplete();
+            OnDeath.Invoke();
+            return;
+        }
+
         base.Death();
     }
 }

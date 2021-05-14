@@ -12,7 +12,7 @@ public class MainMobileController : MonoBehaviour
 
     public float edgeDis = 10f;
     Camera cam;
-    bool actionValid = true;
+    public bool actionValid = true;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class MainMobileController : MonoBehaviour
     IEnumerator CancelableActionCoroutine(UnityAction action)
     {
         actionValid = true;
-        yield return new WaitForSeconds(0.075f);
+        yield return new WaitForSeconds(0.1f);
         if(actionValid) action.Invoke();
     }
 }

@@ -10,14 +10,24 @@ public class SkillSelection : MonoBehaviour
     int selectionIndex = 0;
     public AudioSource source;
 
+    public float baseY;
+    float selectedY;
+    
     private void Awake()
     {
-        SetSkill(selectionIndex, false);
+        baseY = skills[0].transform.position.y;
+        selectedY = baseY + 20f;
+
         for (int i = 0; i < skills.Length; i++)
         {
             int num = i;
             skills[i].OnClick.AddListener(() => SetSkill(num));
+
+            skills[i].transform.DOKill();
+            skills[i].transform.DOLocalMoveY(baseY, 0.5f);
         }
+
+        SetSkill(selectionIndex, false);
     }
 
     private void Update()
@@ -39,7 +49,6 @@ public class SkillSelection : MonoBehaviour
             SetSkill(4);
         if (Input.GetKeyDown(KeyCode.Alpha6))
             SetSkill(5);
-
     }
 
     public void MoveLeft()
@@ -62,9 +71,9 @@ public class SkillSelection : MonoBehaviour
         var s = skills[index].transform;
 
         os.DOKill();
-        os.DOLocalMoveY(0, 0.5f);
+        os.DOLocalMoveY(baseY, 0.5f);
         s.DOKill();
-        s.DOLocalMoveY(20, 0.1f);
+        s.DOLocalMoveY(selectedY, 0.1f);
 
         selectionIndex = index;
         selectedAction = skills[selectionIndex];
