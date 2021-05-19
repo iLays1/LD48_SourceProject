@@ -18,7 +18,7 @@ public class ArcherAction : UnitAction
         if (dir == 1)
             user.visuals.FlipRight();
 
-        target.TakeDamage(user.attackPower);
+        target.TakeAttackDamage(user.attackPower);
 
         user.unitAudio?.attackSound.Play();
         if (user.visuals != null)

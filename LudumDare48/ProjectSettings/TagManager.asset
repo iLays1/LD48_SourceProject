@@ -59,6 +59,9 @@ TagManager:
   - name: FadeIn
     uniqueID: 1724560199
     locked: 0
+  - name: Overlay
+    uniqueID: 778031357
+    locked: 0
   - name: TouchFeedback
     uniqueID: 2051766429
     locked: 0

@@ -15,15 +15,7 @@ public class CombatUIHider : MonoBehaviour
         LevelEndHandler.OnLevelWin.AddListener(HideUI);
         LevelEndHandler.OnLevelLose.AddListener(HideUI);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-            HideUI();
-        if (Input.GetKeyDown(KeyCode.Y))
-            ShowUI();
-    }
-
+    
     private void Start()
     {
         rec = GetComponent<RectTransform>();

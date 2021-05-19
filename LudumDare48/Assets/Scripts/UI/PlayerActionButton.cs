@@ -33,7 +33,7 @@ public class PlayerActionButton : MonoBehaviour
                    touchPos.y < transform.position.y + (col.bounds.size.y / 2) + extra &&
                    touchPos.y > transform.position.y - (col.bounds.size.y / 2) - extra)
                 {
-                    Debug.Log(name);
+                    //Debug.Log(name);
                     MainMobileController.CallCancel.Invoke();
                     OnClick.Invoke();
                 }

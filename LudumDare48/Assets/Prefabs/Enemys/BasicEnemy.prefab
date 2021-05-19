@@ -293,24 +293,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2757f303718933a428822970e4685f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDamaged:
+  OnHpChange:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
   maxHp: 16
-  hp: 16
   attackPower: 3
   defense: 0
   speed: 2
+  hp: 16
   laneIndex: 7
   lastIndex: 0
   unitAudio: {fileID: 7901751908959473275}
   visuals: {fileID: 8394510427430139503}
+  facingDir: 1
   timerText: {fileID: 7964241789663070223}
   attackAction: {fileID: 2142244077}
   actSpeed: 3
+  customDeath: 0
 --- !u!114 &2142244077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db611c2c28a29345b0e12f8c007770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 2081464469}
+  rend: {fileID: 0}
   idleSprite: {fileID: 21300000, guid: a7584b8a45b21c349986d0d9d2c66473, type: 3}
   attackingSprite: {fileID: 21300000, guid: a52dedf86243d9d4fbd19b69c0b94d79, type: 3}
   deathParticle: {fileID: 4094069918711645919}

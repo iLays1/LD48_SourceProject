@@ -15,8 +15,8 @@ public class SkillSelection : MonoBehaviour
     
     private void Awake()
     {
-        baseY = skills[0].transform.position.y;
-        selectedY = baseY + 20f;
+        baseY = skills[0].transform.localScale.y;
+        selectedY = baseY + 0.1f;
 
         for (int i = 0; i < skills.Length; i++)
         {
@@ -24,7 +24,7 @@ public class SkillSelection : MonoBehaviour
             skills[i].OnClick.AddListener(() => SetSkill(num));
 
             skills[i].transform.DOKill();
-            skills[i].transform.DOLocalMoveY(baseY, 0.5f);
+            skills[i].transform.DOScale(baseY, 0.5f);
         }
 
         SetSkill(selectionIndex, false);
@@ -71,9 +71,9 @@ public class SkillSelection : MonoBehaviour
         var s = skills[index].transform;
 
         os.DOKill();
-        os.DOLocalMoveY(baseY, 0.5f);
+        os.DOScale(baseY, 0.5f);
         s.DOKill();
-        s.DOLocalMoveY(selectedY, 0.1f);
+        s.DOScale(selectedY, 0.1f);
 
         selectionIndex = index;
         selectedAction = skills[selectionIndex];

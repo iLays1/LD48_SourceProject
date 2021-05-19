@@ -16,7 +16,7 @@ public class FallingEnemy : FallingUnit
     public int actSpeed = 3;
     protected int actTimer = 3;
 
-    FallingPlayer player;
+    protected FallingPlayer player;
 
     [HideInInspector]
     public bool customDeath = false;
@@ -47,11 +47,10 @@ public class FallingEnemy : FallingUnit
     void Tick()
     {
         actTimer--;
-
-        FacePlayer();
-
+        
         if (actTimer <= 0)
         {
+            FacePlayer();
             actTimer = actSpeed;
             EnemyAct();
         }
@@ -61,22 +60,20 @@ public class FallingEnemy : FallingUnit
 
     public void FacePlayer()
     {
-        var dir = player.laneIndex > laneIndex ? 1 : -1;
+        var dir = GetDirFrom(player);
 
         if (dir == -1)
-            visuals.FlipLeft();
+            FlipLeft();
         if (dir == 1)
-            visuals.FlipRight();
+            FlipRight();
     }
 
     public virtual void EnemyAct() => StartCoroutine(EnemyActCoroutine());
     IEnumerator EnemyActCoroutine()
     {
         yield return new WaitForSeconds(0.03f); 
-
-        var playerDir = (laneIndex < player.laneIndex) ? 1 : 0;
         
-        if (playerDir == 0)
+        if (facingDir == -1)
         {
             if (visuals != null)
                 visuals.FlipLeft();
@@ -89,7 +86,7 @@ public class FallingEnemy : FallingUnit
                 MoveLeft();
             }
         }
-        if (playerDir == 1)
+        if (facingDir == 1)
         {
             if (visuals != null)
                 visuals.FlipRight();

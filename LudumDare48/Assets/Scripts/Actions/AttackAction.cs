@@ -10,10 +10,8 @@ public class AttackAction : UnitAction
         var target = LaneManager.instance.lanes[user.laneIndex + dir].occupant;
 
         user.transform.DOPunchPosition(new Vector3(dir,0,0) * 0.8f, 0.1f);
-
-        int dmg = user.attackPower - target.defense;
-        if (dmg < 0) dmg = 0;
-        target.TakeDamage(dmg);
+        
+        target.TakeAttackDamage(user.attackPower);
 
         user.unitAudio?.attackSound.Play();
         if (user.visuals != null)

@@ -28,6 +28,7 @@ public class FallingUnit : MonoBehaviour
     public UnitAudio unitAudio;
     public UnitVisuals visuals;
 
+    [HideInInspector] public int facingDir = 1;
     FadingText dmgText;
     int dmg;
     
@@ -55,6 +56,14 @@ public class FallingUnit : MonoBehaviour
 
         //unitAudio?.healSound.Play();
         OnHpChange.Invoke();
+    }
+
+    public virtual void TakeAttackDamage(int damage)
+    {
+        damage -= defense;
+        if (damage < 1) damage = 1;
+
+        TakeDamage(damage);
     }
 
     public virtual void TakeDamage(int damage)
@@ -111,17 +120,34 @@ public class FallingUnit : MonoBehaviour
     public virtual void MoveLeft()
     {
         if (visuals != null)
-            visuals.FlipLeft();
+            FlipLeft();
         
         SetLane(laneIndex - 1, true);
     }
     public virtual void MoveRight()
     {
         if (visuals != null)
-            visuals.FlipRight();
+            FlipRight();
 
         SetLane(laneIndex + 1, true);
     }
+
+    protected void FlipLeft()
+    {
+        facingDir = -1;
+        visuals.FlipLeft();
+    }
+    protected void FlipRight()
+    {
+        facingDir = 1;
+        visuals.FlipRight();
+    }
+
+    public int GetDirFrom(FallingUnit unit)
+    {
+        return unit.laneIndex > laneIndex ? 1 : -1;
+    }
+
 
     public virtual void SetLane(int index, bool tick = false)
     {

@@ -38,7 +38,7 @@ public class RangedAttackAction : UnitAction
             if (dmg < 1) dmg = 1;
 
             user.visuals.AttackAnimation();
-            target.TakeDamage(dmg);
+            target.TakeAttackDamage(dmg);
             return true;
         }
 

@@ -36,11 +36,13 @@ public class LevelManager : MonoBehaviour
     ThreatSpawner threatSpawner;
     bool gameOver = false;
     FallingPlayer player;
+    BossSpawnSequencer bossSpawner;
 
     private void Awake()
     {
         player = FindObjectOfType<FallingPlayer>();
         threatSpawner = GetComponent<ThreatSpawner>();
+        bossSpawner = GetComponent<BossSpawnSequencer>();
         FallingEnemy.OnEnemyDeath.AddListener(OnKill);
     }
 
@@ -103,18 +105,7 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnBossSequence()
     {
-        StartCoroutine(SpawnBossSequenceCoroutine());
-    }
-    IEnumerator SpawnBossSequenceCoroutine()
-    {
-        player.isActive = false;
-        yield return new WaitForSeconds(2f);
-
-        SpawnBoss(bossStartPos);
-
-        yield return new WaitForSeconds(0.3f);
-        player.isActive = true;
-
+        bossSpawner.SpawnBossSequence(bossStartPos);
     }
 
     public void SpawnBoss(int i)
