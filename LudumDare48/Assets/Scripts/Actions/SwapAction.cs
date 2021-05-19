@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Action/Swap")]
 public class SwapAction : UnitAction
 {
     public override bool Do(FallingUnit user, int dir)

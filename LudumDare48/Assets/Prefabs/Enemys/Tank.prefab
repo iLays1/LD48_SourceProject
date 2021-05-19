@@ -181,7 +181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7573739446351128870}
   - component: {fileID: 7602778362640258617}
-  - component: {fileID: 8184623141712562942}
   - component: {fileID: 426388013543665788}
   m_Layer: 0
   m_Name: Tank
@@ -239,24 +238,11 @@ MonoBehaviour:
   visuals: {fileID: 426388013543665788}
   facingDir: 1
   timerText: {fileID: 2239191526007131676}
-  attackAction: {fileID: 8184623141712562942}
+  attackAction: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
   actSpeed: 6
   customDeath: 0
   chargeTimes: 3
   chargeSpeed: 1
---- !u!114 &8184623141712562942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7573739446351128869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa1f4392fbc0d7c40bad68c7c20448de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stationaryAction: 0
 --- !u!114 &426388013543665788
 MonoBehaviour:
   m_ObjectHideFlags: 0

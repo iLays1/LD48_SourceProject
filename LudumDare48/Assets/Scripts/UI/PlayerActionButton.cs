@@ -14,7 +14,6 @@ public class PlayerActionButton : MonoBehaviour
     private void Awake()
     {
         col = GetComponent<Collider2D>();
-        action = GetComponent<UnitAction>();
     }
     
     private void LateUpdate()

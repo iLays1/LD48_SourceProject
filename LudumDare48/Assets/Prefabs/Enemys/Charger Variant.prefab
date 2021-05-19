@@ -12,24 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d55096519cf874b8aa241a9761edbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDamaged:
+  OnHpChange:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
   maxHp: 12
-  hp: 12
   attackPower: 3
   defense: 0
   speed: 5
+  hp: 12
   laneIndex: 0
   lastIndex: 0
   unitAudio: {fileID: 4707990874428695263}
   visuals: {fileID: 6377597893772581579}
+  facingDir: 1
   timerText: {fileID: 4789620025732457643}
-  attackAction: {fileID: 3242184633623846985}
+  attackAction: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
   actSpeed: 6
+  customDeath: 0
   chargeTimes: 3
   chargeSpeed: 1
 --- !u!1001 &3242184634990144676
@@ -107,17 +109,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1769576572799905590, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
   m_PrefabInstance: {fileID: 3242184634990144676}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3242184633623846985 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2142244077, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-  m_PrefabInstance: {fileID: 3242184634990144676}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3778591809429980050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa1f4392fbc0d7c40bad68c7c20448de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6377597893772581579 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}

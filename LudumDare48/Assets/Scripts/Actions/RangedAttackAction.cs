@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Action/Ranged")]
 public class RangedAttackAction : UnitAction
 {
     public float damageFactor = 0.2f;

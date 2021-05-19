@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Action/Enemy_ArcherAction")]
 public class ArcherAction : UnitAction
 {
     public override bool Do(FallingUnit user, int dir)

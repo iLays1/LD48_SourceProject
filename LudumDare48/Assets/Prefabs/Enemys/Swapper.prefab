@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 16122246736619482}
   - component: {fileID: 16122246736619483}
   - component: {fileID: 7838727754994024064}
-  - component: {fileID: 16122246736619460}
   m_Layer: 0
   m_Name: Swapper
   m_TagString: Untagged
@@ -68,7 +67,7 @@ MonoBehaviour:
   visuals: {fileID: 7838727754994024064}
   facingDir: 1
   timerText: {fileID: 8516623741521789152}
-  attackAction: {fileID: 16122246736619460}
+  attackAction: {fileID: 11400000, guid: 8bae6ba65f6835d46b8989b9bfed5fc4, type: 2}
   actSpeed: 6
   customDeath: 0
 --- !u!114 &7838727754994024064
@@ -88,19 +87,6 @@ MonoBehaviour:
   attackingSprite: {fileID: 21300000, guid: 42b1234516863d4459e1b1db1e3adcca, type: 3}
   deathParticle: {fileID: 1400562996299980304}
   hitParticle: {fileID: 1476489971903581213}
---- !u!114 &16122246736619460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16122246736619481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02909ac4bd83b884a9f0a952ba743d27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stationaryAction: 0
 --- !u!1 &1241472039786971842
 GameObject:
   m_ObjectHideFlags: 0
