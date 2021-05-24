@@ -13,14 +13,14 @@ public abstract class Hazard : MonoBehaviour
         transform.position = targetLane.transform.position + (Vector3.down * 2.5f);
         TickManager.ActivateHazards.AddListener(Activate);
         LevelEndHandler.OnLevelWin.AddListener(DestroyHazard);
-        targetLane.laneSpriteRend.color = hazardColor;
+        targetLane.SetColor(hazardColor);
     }
 
     protected abstract void Activate();
 
     public void DestroyHazard()
     {
-        targetLane.laneSpriteRend.color = targetLane.safeColor;
+        targetLane.ResetColor();
         Destroy(gameObject);
     }
 }

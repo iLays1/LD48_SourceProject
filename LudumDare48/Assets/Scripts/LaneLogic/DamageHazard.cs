@@ -25,6 +25,6 @@ public class DamageHazard : Hazard
             targetLane.occupant.TakeDamage(damage);
         }
 
-        targetLane.laneSpriteRend.color = targetLane.safeColor;
+        targetLane.ResetColor();
     }
 }

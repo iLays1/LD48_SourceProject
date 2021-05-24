@@ -85,6 +85,8 @@ public class FallingPlayer : FallingUnit
     {
         if (moving || !isActive) return;
         
+        myLane.OnPlayerInteract(this);
+
         TickAction();
     }
 
