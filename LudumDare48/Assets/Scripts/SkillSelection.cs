@@ -13,7 +13,7 @@ public class SkillSelection : MonoBehaviour
     public float baseY;
     float selectedY;
     
-    private void Awake()
+    private void Start()
     {
         baseY = skills[0].transform.localScale.y;
         selectedY = baseY + 0.1f;
@@ -25,6 +25,8 @@ public class SkillSelection : MonoBehaviour
 
             skills[i].transform.DOKill();
             skills[i].transform.DOScale(baseY, 0.5f);
+
+            skills[i].LoadButton(TestPlayerData.instance.actions[i]);
         }
 
         SetSkill(selectionIndex, false);
@@ -62,8 +64,10 @@ public class SkillSelection : MonoBehaviour
 
     public void SetSkill(int index, bool playSound = true)
     {
-        if(playSound) source.Play();
+        if (!skills[index].active) return;
 
+        if (playSound) source.Play();
+        
         if (index < 0) index = skills.Length - 1;
         if (index > skills.Length - 1) index = 0;
 

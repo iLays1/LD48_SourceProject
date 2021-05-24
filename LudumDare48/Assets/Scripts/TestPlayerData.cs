@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class TestPlayerData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static TestPlayerData instance;
+    public UnitAction[] actions;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        instance = this;
     }
 }

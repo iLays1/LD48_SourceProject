@@ -40,7 +40,8 @@ public class FallingPlayer : FallingUnit
     {
         if (moving || !isActive) return;
 
-        if (!SkillSelection.selectedAction.action.stationaryAction)
+        
+        if (SkillSelection.selectedAction == null || !SkillSelection.selectedAction.action.stationaryAction)
         {
             MoveLeft();
         }
@@ -54,7 +55,7 @@ public class FallingPlayer : FallingUnit
     {
         if (moving || !isActive) return;
 
-        if (!SkillSelection.selectedAction.action.stationaryAction)
+        if (SkillSelection.selectedAction == null || !SkillSelection.selectedAction.action.stationaryAction)
         {
             MoveRight();
         }
@@ -67,14 +68,14 @@ public class FallingPlayer : FallingUnit
 
     public void UseSkillLeft(bool tickless = false)
     {
-        bool skillUsed = SkillSelection.selectedAction.action.Do(this, -1);
+        bool skillUsed = SkillSelection.selectedAction.UseAction(this, -1);
         if (skillUsed && !tickless) TickAction();
         else
             transform.DOPunchPosition(Vector3.left * 0.5f, 0.1f);
     }
     public void UseSkillRight(bool tickless = false)
     {
-        bool skillUsed = SkillSelection.selectedAction.action.Do(this, 1);
+        bool skillUsed = SkillSelection.selectedAction.UseAction(this, 1);
         if (skillUsed && !tickless) TickAction();
         else
             transform.DOPunchPosition(Vector3.right * 0.5f, 0.1f);

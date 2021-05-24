@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8f70f183fceaa4ea449f122560edfa, type: 3}
   m_Name: RangedAction
   m_EditorClassIdentifier: 
+  displayName: Arrow
+  icon: {fileID: 0}
   stationaryAction: 1
   damageFactor: 0.2

@@ -61,7 +61,7 @@ public class FallingUnit : MonoBehaviour
     public virtual void TakeAttackDamage(int damage)
     {
         damage -= defense;
-        if (damage < 1) damage = 1;
+        if (damage < 0) damage = 0;
 
         TakeDamage(damage);
     }
@@ -95,7 +95,7 @@ public class FallingUnit : MonoBehaviour
         {
             dmg = damage;
             dmgText = FadingText.Create(transform.position + Vector3.up, Color.red, transform, dmg.ToString());
-            StartCoroutine(dmgTextCoroutine());
+            //StartCoroutine(dmgTextCoroutine());
         }
         else
         {
@@ -103,11 +103,12 @@ public class FallingUnit : MonoBehaviour
             dmgText.StartAgain(dmg.ToString(), transform.position + Vector3.up);
         }
     }
-    IEnumerator dmgTextCoroutine()
-    {
-        yield return new WaitForSeconds(0.3f);
-        dmgText = null;
-    }
+
+    //IEnumerator dmgTextCoroutine()
+    //{
+    //    yield return new WaitForSeconds(1.4f);
+    //    dmgText = null;
+    //}
 
     public virtual void Death()
     {

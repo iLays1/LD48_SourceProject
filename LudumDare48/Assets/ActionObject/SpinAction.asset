@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896c906924c33624a83950d0d168a848, type: 3}
   m_Name: SpinAction
   m_EditorClassIdentifier: 
+  displayName: Spin
+  icon: {fileID: 0}
   stationaryAction: 0

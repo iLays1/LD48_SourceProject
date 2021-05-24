@@ -26,7 +26,9 @@ public class FallingEnemy : FallingUnit
         base.Awake();
 
         timerText.GetComponent<MeshRenderer>().sortingLayerName = "UI";
+
         player = FindObjectOfType<FallingPlayer>();
+        if (player == null) return;
 
         actSpeed = speed + player.speed;
         if (actSpeed < 1) actSpeed = 1;
@@ -60,6 +62,8 @@ public class FallingEnemy : FallingUnit
 
     public void FacePlayer()
     {
+        if (player == null) return;
+
         var dir = GetDirFrom(player);
 
         if (dir == -1)

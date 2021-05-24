@@ -7,4 +7,9 @@ public class Lane : MonoBehaviour
     public FallingUnit occupant;
     public SpriteRenderer laneSpriteRend;
     public Color safeColor;
+
+    private void Awake()
+    {
+        laneSpriteRend.color = safeColor;
+    }
 }

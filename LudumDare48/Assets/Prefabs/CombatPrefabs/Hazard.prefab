@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLane: {fileID: 0}
-  hazardColor: {r: 1, g: 0, b: 0, a: 0.15686275}
+  hazardColor: {r: 1, g: 0, b: 0, a: 0.29411766}
   damage: 10
 --- !u!95 &678679114
 Animator:

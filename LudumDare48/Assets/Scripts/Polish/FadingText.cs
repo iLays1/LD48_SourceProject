@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class FadingText : MonoBehaviour
 {
-    public static FadingText Create(Vector3 position, Color color, Transform parent, string text, float duration = 2.4f)
+    public static FadingText Create(Vector3 position, Color color, Transform parent, string text)
     {
         var go = (GameObject)Instantiate(Resources.Load("FadingText"));
         go.transform.SetParent(parent);
 
         FadingText t = go.GetComponent<FadingText>();
-        t.Initalize(text, color, duration, position);
+        t.Initalize(text, color, position);
 
         return t;
     }
@@ -20,12 +20,10 @@ public class FadingText : MonoBehaviour
     public TextMeshPro textMesh;
     Sequence s;
     Color color;
-    float duration;
     
-    public void Initalize(string text, Color color, float duration, Vector3 position)
+    public void Initalize(string text, Color color, Vector3 position)
     {
         this.color = color;
-        this.duration = duration;
 
         transform.position = position;
         GetComponent<MeshRenderer>().sortingLayerName = "UI";
@@ -35,18 +33,18 @@ public class FadingText : MonoBehaviour
 
         s = DOTween.Sequence();
 
-        transform.localScale = Vector3.zero;
+        transform.localScale = Vector3.one;
+        transform.position += Vector3.up * 0.1f;
 
-        s.Append(transform.DOMoveY(transform.position.y + 1.5f, duration / 8));
-        s.Join(transform.DOScale(Vector3.one, duration / 6));
-        s.Append(transform.DOScale(Vector3.zero, duration * 0.3f));
-        s.Join(transform.DOMoveY(transform.position.y - 0.3f, duration));
+        s.Append(transform.DOPunchPosition(Vector3.up * 0.1f, 1.2f));
+        s.Append(textMesh.DOFade(0f, 0.2f));
+
         s.AppendCallback(() => Destroy(gameObject));
     }
 
     public void StartAgain(string text, Vector3 pos)
     {
         s.Kill();
-        Initalize(text, color, duration, pos);
+        Initalize(text, color, pos);
     }
 }
