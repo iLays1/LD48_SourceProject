@@ -1,21 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4470930963072902081
+--- !u!114 &762997209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3778591809429980050}
+  m_GameObject: {fileID: 2441705380155574861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d55096519cf874b8aa241a9761edbd, type: 3}
+  m_Script: {fileID: 11500000, guid: 55c7f2615b9f2c04087e1a48cf26b76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
-  chargeTimes: 4
-  chargeSpeed: 1
---- !u!1001 &3242184634990144676
+  action: {fileID: 11400000, guid: 7be418b09a516734f845f4822eca3779, type: 2}
+--- !u!1001 &4137790593604658555
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -23,28 +21,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2081464469, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081464469, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081464469, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 208eb95acf49a984b828e9beca9117c0, type: 3}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.5958185
+      value: 4.6285524
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.64636
+      value: 2.9871192
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -80,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905590, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_Name
-      value: Charger Variant
+      value: Archer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: maxHp
@@ -90,11 +80,31 @@ PrefabInstance:
       propertyPath: speed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: attackPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: attackAction
+      value: 
+      objectReference: {fileID: 11400000, guid: 7be418b09a516734f845f4822eca3779, type: 2}
+    - target: {fileID: 3237860105636545605, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.949
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: idleSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 208eb95acf49a984b828e9beca9117c0, type: 3}
+    - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: attackingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dea7e159030a7c747b3905b06f3d1ce4, type: 3}
     m_RemovedComponents:
     - {fileID: 1169064080858015008, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
---- !u!1 &3778591809429980050 stripped
+--- !u!1 &2441705380155574861 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1769576572799905590, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-  m_PrefabInstance: {fileID: 3242184634990144676}
+  m_PrefabInstance: {fileID: 4137790593604658555}
   m_PrefabAsset: {fileID: 0}

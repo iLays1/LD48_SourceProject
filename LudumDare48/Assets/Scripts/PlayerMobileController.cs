@@ -21,7 +21,7 @@ public class PlayerMobileController : MonoBehaviour
     {
         player = FindObjectOfType<FallingPlayer>();
     }
-
+    
     void Left()
     {
         if (!isActive) return;

@@ -46,6 +46,20 @@ public class MainMobileController : MonoBehaviour
             actionValid = false;
             return;
         }
+
+        //Simulate Mobile Controls
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            CancelableAction(() => OnTapLeft.Invoke());
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            OnDoubleTap.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            CancelableAction(() => OnTapRight.Invoke());
+        }
     }
 
     public void CancelAction()

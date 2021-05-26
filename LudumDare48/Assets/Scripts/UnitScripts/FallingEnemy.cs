@@ -10,11 +10,12 @@ public class FallingEnemy : FallingUnit
     public static UnityEvent OnEnemyDeath = new UnityEvent();
 
     public TextMeshPro timerText;
-    public UnitAction attackAction;
 
     [HideInInspector]
     public int actSpeed = 3;
-    protected int actTimer = 3;
+    public int actTimer = 3;
+
+    EnemyBehavior behavior;
 
     protected FallingPlayer player;
 
@@ -25,6 +26,7 @@ public class FallingEnemy : FallingUnit
     {
         base.Awake();
 
+        HpSlider.Create(this);
         timerText.GetComponent<MeshRenderer>().sortingLayerName = "UI";
 
         player = FindObjectOfType<FallingPlayer>();
@@ -35,6 +37,9 @@ public class FallingEnemy : FallingUnit
         actTimer = actSpeed;
 
         timerText.text = actTimer.ToString();
+
+        behavior = GetComponent<EnemyBehavior>();
+        if (behavior == null) Debug.LogError($"{name} must have an Enemy Behavior Component with the FallingEnemy Component!");
     }
 
     protected override void Start()
@@ -54,7 +59,7 @@ public class FallingEnemy : FallingUnit
         {
             FacePlayer();
             actTimer = actSpeed;
-            EnemyAct();
+            behavior.EnemyAct();
         }
 
         timerText.text = actTimer.ToString();
@@ -71,43 +76,11 @@ public class FallingEnemy : FallingUnit
         if (dir == 1)
             FlipRight();
     }
-
-    public virtual void EnemyAct() => StartCoroutine(EnemyActCoroutine());
-    IEnumerator EnemyActCoroutine()
-    {
-        yield return new WaitForSeconds(0.03f); 
-        
-        if (facingDir == -1)
-        {
-            if (visuals != null)
-                visuals.FlipLeft();
-            if (lanes[laneIndex - 1].occupant != null && lanes[laneIndex - 1].occupant is FallingPlayer)
-            {
-                attackAction.Do(this, - 1);
-            }
-            else
-            {
-                MoveLeft();
-            }
-        }
-        if (facingDir == 1)
-        {
-            if (visuals != null)
-                visuals.FlipRight();
-
-            if (lanes[laneIndex + 1].occupant != null && lanes[laneIndex + 1].occupant is FallingPlayer)
-            {
-                attackAction.Do(this, + 1);
-            }
-            else
-            {
-                MoveRight();
-            }
-        }
-    }
-
+    
     public override void Death()
     {
+        Destroy(behavior);
+
         StopAllCoroutines();
         OnEnemyDeath.Invoke();
         Destroy(timerText.gameObject);

@@ -35,7 +35,6 @@ public class FallingUnit : MonoBehaviour
     protected virtual void Awake()
     {
         hp = maxHp;
-        HpSlider.Create(this);
         screenShaker = FindObjectOfType<ScreenShaker>();
     }
 
@@ -104,11 +103,11 @@ public class FallingUnit : MonoBehaviour
         }
     }
 
-    //IEnumerator dmgTextCoroutine()
-    //{
-    //    yield return new WaitForSeconds(1.4f);
-    //    dmgText = null;
-    //}
+    IEnumerator dmgTextCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        dmgText = null;
+    }
 
     public virtual void Death()
     {
@@ -146,10 +145,10 @@ public class FallingUnit : MonoBehaviour
 
     public int GetDirFrom(FallingUnit unit)
     {
+        //1 means the target is to the Right, -1 is Left
         return unit.laneIndex > laneIndex ? 1 : -1;
     }
-
-
+    
     public virtual void SetLane(int index, bool tick = false)
     {
         if (index < 0) index = 0;

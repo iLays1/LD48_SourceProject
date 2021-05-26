@@ -10,36 +10,10 @@ public class FallingPlayer : FallingUnit
     public bool isActive = true;
     public bool keyboardControls = true;
     bool moving = false;
-
-    protected override void Awake()
-    {
-        screenShaker = FindObjectOfType<ScreenShaker>();
-        //TickManager.OnOutOfMoves.AddListener(() => isActive = false);
-    }
-
-    private void Update()
-    {
-        if(isActive && keyboardControls)
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                LeftAction();
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                StayAction();
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                RightAction();
-            }
-        }
-    }
-
+    
     public void LeftAction()
     {
         if (moving || !isActive) return;
-
         
         if (SkillSelection.selectedAction == null || !SkillSelection.selectedAction.action.stationaryAction)
         {

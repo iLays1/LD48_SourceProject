@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
         public UnityEvent action;
     }
 
+    public bool isActive = true;
+
     public UnityEvent OnObjectiveComplete = new UnityEvent();
     public UnityEvent OnUpdateUI = new UnityEvent();
 
@@ -56,6 +58,8 @@ public class LevelManager : MonoBehaviour
 
     void OnKill()
     {
+        if (!isActive) return;
+
         kills++;
         UpdateUI();
 
@@ -156,7 +160,9 @@ public class LevelManager : MonoBehaviour
 
     void Win()
     {
-        winTarget.OnDeath.RemoveListener(Win);
+        if(winTarget != null)
+            winTarget.OnDeath.RemoveListener(Win);
+
         gameOver = true;
         OnObjectiveComplete.Invoke();
     }

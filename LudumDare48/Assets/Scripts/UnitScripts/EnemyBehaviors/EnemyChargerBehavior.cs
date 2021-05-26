@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingEnemyCharger : FallingEnemy
+public class EnemyChargerBehavior : EnemyBehavior
 {
     public int chargeTimes;
     public int chargeSpeed;
@@ -10,16 +10,10 @@ public class FallingEnemyCharger : FallingEnemy
     bool charging = false;
     int oActspeed;
     int charges = 0;
-
-    protected override void Awake()
+    
+    protected void Start()
     {
-        oActspeed = actSpeed;
-        base.Awake();
-    }
-
-    protected override void Start()
-    {
-        base.Start();
+        oActspeed = enemy.actSpeed;
         EndCharge();
     }
 
@@ -47,21 +41,21 @@ public class FallingEnemyCharger : FallingEnemy
 
     void BeginCharge()
     {
-        actSpeed = chargeSpeed;
-        actTimer = actSpeed;
+        enemy.actSpeed = chargeSpeed;
+        enemy.actTimer = enemy.actSpeed;
 
         charging = true;
 
-        timerText.text = actTimer.ToString();
+        enemy.timerText.text = enemy.actTimer.ToString();
     }
     void EndCharge()
     {
-        actSpeed = oActspeed;
-        actTimer = actSpeed;
+        enemy.actSpeed = oActspeed;
+        enemy.actTimer = enemy.actSpeed;
 
         charges = 0;
         charging = false;
 
-        timerText.text = actTimer.ToString();
+        enemy.timerText.text = enemy.actTimer.ToString();
     }
 }

@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98858a7810399e440927606c2c802964, type: 3}
-  m_Name: SuperSlashAction
+  m_Script: {fileID: 11500000, guid: 4bcb6cbeabb378b4b915e319cfa32d06, type: 3}
+  m_Name: Enemy_ArcherAction
   m_EditorClassIdentifier: 
-  displayName: Super Slash
+  displayName: 
   icon: {fileID: 0}
   stationaryAction: 0
-  coolDown: 10
-  dmgFactor: 2
