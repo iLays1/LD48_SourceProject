@@ -12,7 +12,7 @@ public class AttackAction : UnitAction
 
         user.transform.DOPunchPosition(new Vector3(dir,0,0) * 0.8f, 0.1f);
         
-        target.TakeAttackDamage(user.attackPower);
+        target.damager.TakeAttackDamage(user.attackPower, user.laneIndex);
 
         user.unitAudio?.attackSound.Play();
         if (user.visuals != null)

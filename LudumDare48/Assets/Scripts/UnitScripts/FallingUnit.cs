@@ -11,7 +11,6 @@ public class FallingUnit : MonoBehaviour
 
     protected Lane[] lanes { get { return LaneManager.instance.lanes; } }
     public Lane myLane { get { return LaneManager.instance.lanes[laneIndex]; } }
-    protected ScreenShaker screenShaker;
 
     [Header("Stats")]
     public int maxHp;
@@ -27,15 +26,16 @@ public class FallingUnit : MonoBehaviour
 
     public UnitAudio unitAudio;
     public UnitVisuals visuals;
+    public UnitDamager damager;
 
     [HideInInspector] public int facingDir = 1;
-    FadingText dmgText;
-    int dmg;
+
+    List<UnitModifier> modifiers;
     
     protected virtual void Awake()
     {
         hp = maxHp;
-        screenShaker = FindObjectOfType<ScreenShaker>();
+        damager = GetComponent<UnitDamager>();
     }
 
     protected virtual void Start()
@@ -43,6 +43,13 @@ public class FallingUnit : MonoBehaviour
         lastIndex = laneIndex;
         SetLane(laneIndex);
         transform.position = new Vector3(myLane.transform.position.x, 10, 0);
+        
+        modifiers = new List<UnitModifier>();
+        foreach (var mod in GetComponents<UnitModifier>())
+        {
+            mod.Apply(this);
+            modifiers.Add(mod);
+        }
     }
 
     public virtual void Heal(int amount)
@@ -57,60 +64,9 @@ public class FallingUnit : MonoBehaviour
         OnHpChange.Invoke();
     }
 
-    public virtual void TakeAttackDamage(int damage)
-    {
-        damage -= defense;
-        if (damage < 0) damage = 0;
-
-        TakeDamage(damage);
-    }
-
-    public virtual void TakeDamage(int damage)
-    {
-        if (visuals != null)
-            visuals.DamagedAnimation();
-
-        hp -= damage;
-        DamageText(damage);
-
-        if (hp <= 0)
-        {
-            unitAudio?.deathSound.Play();
-            screenShaker.Shake(0.2f, 0.2f);
-            hp = 0;
-
-            Death();
-            return;
-        }
-
-        unitAudio?.hitSound.Play();
-        screenShaker.Shake(0.10f, 0.08f);
-        OnHpChange.Invoke();
-    }
-
-    void DamageText(int damage)
-    {
-        if (dmgText == null)
-        {
-            dmg = damage;
-            dmgText = FadingText.Create(transform.position + Vector3.up, Color.red, transform, dmg.ToString());
-            //StartCoroutine(dmgTextCoroutine());
-        }
-        else
-        {
-            dmg += damage;
-            dmgText.StartAgain(dmg.ToString(), transform.position + Vector3.up);
-        }
-    }
-
-    IEnumerator dmgTextCoroutine()
-    {
-        yield return new WaitForSeconds(1f);
-        dmgText = null;
-    }
-
     public virtual void Death()
     {
+        Destroy(damager);
         visuals.DeathAnimation();
         transform.DOComplete();
         OnDeath.Invoke();
@@ -148,7 +104,12 @@ public class FallingUnit : MonoBehaviour
         //1 means the target is to the Right, -1 is Left
         return unit.laneIndex > laneIndex ? 1 : -1;
     }
-    
+    public int GetDirFrom(int index)
+    {
+        //1 means the target is to the Right, -1 is Left
+        return index > laneIndex ? 1 : -1;
+    }
+
     public virtual void SetLane(int index, bool tick = false)
     {
         if (index < 0) index = 0;

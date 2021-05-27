@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 1769576572799905591}
   - component: {fileID: 8394510427430139503}
   - component: {fileID: 1169064080858015008}
+  - component: {fileID: 4426866943357699348}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -308,6 +309,7 @@ MonoBehaviour:
   lastIndex: 0
   unitAudio: {fileID: 7901751908959473275}
   visuals: {fileID: 8394510427430139503}
+  damager: {fileID: 0}
   facingDir: 1
   timerText: {fileID: 7964241789663070223}
   actSpeed: 3
@@ -343,6 +345,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
+--- !u!114 &4426866943357699348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769576572799905590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7c41739991e3a4088f3fb2cd02cb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  u: {fileID: 0}
 --- !u!1 &3941161501778811466
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class DamageHazard : Hazard
 
         if (targetLane.occupant != null)
         {
-            targetLane.occupant.TakeDamage(damage);
+            targetLane.occupant.damager.TakeDamage(damage);
         }
 
         targetLane.ResetColor();

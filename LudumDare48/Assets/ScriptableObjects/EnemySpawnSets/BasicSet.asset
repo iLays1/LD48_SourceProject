@@ -18,4 +18,6 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 7484255549227287923, guid: de018147c046bf84e827b8765f88aee9, type: 3}
     killsPerSpawn: 12
   - enemyPrefab: {fileID: 3778591809429980051, guid: bb4c2d745557cf14d9e3cb0883038ead, type: 3}
-    killsPerSpawn: 7
+    killsPerSpawn: 6
+  - enemyPrefab: {fileID: 2215238709336986125, guid: 026ca415dc100b1408c9fc35dcfd4abf, type: 3}
+    killsPerSpawn: 20

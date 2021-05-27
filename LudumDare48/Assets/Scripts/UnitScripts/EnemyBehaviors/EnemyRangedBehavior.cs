@@ -7,7 +7,7 @@ public class EnemyRangedBehavior : EnemyBehavior
     public override void EnemyAct() => StartCoroutine(EnemyActCoroutine());
     IEnumerator EnemyActCoroutine()
     {
-        yield return new WaitForSeconds(0.04f);
+        yield return new WaitForSeconds(0.03f);
         action.Do(enemy, 0);
     }
 }

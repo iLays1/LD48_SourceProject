@@ -15,7 +15,7 @@ public class CDAttackAction : CoolDownAction
         user.transform.DOPunchPosition(new Vector3(dir, 0, 0) * 0.8f, 0.1f);
 
         int dmg = Mathf.RoundToInt(user.attackPower * dmgFactor);
-        target.TakeAttackDamage(dmg);
+        target.damager.TakeAttackDamage(dmg, user.laneIndex);
 
         user.unitAudio?.attackSound.Play();
         if (user.visuals != null)

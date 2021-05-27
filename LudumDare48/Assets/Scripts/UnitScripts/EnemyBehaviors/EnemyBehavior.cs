@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FallingEnemy))]
 public abstract class EnemyBehavior : MonoBehaviour
 {
     protected Lane[] lanes { get { return LaneManager.instance.lanes; } }
@@ -14,12 +15,16 @@ public abstract class EnemyBehavior : MonoBehaviour
         enemy = GetComponent<FallingEnemy>();   
     }
     
-    //Defualt action
     public virtual void EnemyAct() => StartCoroutine(EnemyActCoroutine());
     IEnumerator EnemyActCoroutine()
     {
-        yield return new WaitForSeconds(0.03f);
+        yield return new WaitForSeconds(0.05f);
+        BasicAct();
+    }
 
+    //Defualt action
+    protected void BasicAct()
+    {
         if (enemy.facingDir == -1)
         {
             if (enemy.visuals != null)
