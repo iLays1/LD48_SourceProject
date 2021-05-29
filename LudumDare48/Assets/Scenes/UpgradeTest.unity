@@ -322,6 +322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 207401255, guid: b33d1e9177093234b8724363f5db2dfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.47
+      objectReference: {fileID: 0}
     - target: {fileID: 4338831645879564412, guid: b33d1e9177093234b8724363f5db2dfb, type: 3}
       propertyPath: m_Name
       value: Walls
@@ -462,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descTextMesh: {fileID: 64332857}
+  locked: 0
 --- !u!1 &386634292
 GameObject:
   m_ObjectHideFlags: 0
