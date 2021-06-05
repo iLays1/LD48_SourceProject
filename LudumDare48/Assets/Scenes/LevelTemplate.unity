@@ -159,6 +159,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1858091921455904955, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -413
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858091921455904955, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 2308432830619398462, guid: dbb34afac07542140b9f875cfc504159, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -182,6 +190,30 @@ PrefabInstance:
     - target: {fileID: 2308432830619398462, guid: dbb34afac07542140b9f875cfc504159, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002663311039323540, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 264.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002663311039323540, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6056783
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002663311039323540, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2867547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002663311039323540, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.6056783
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002663311039323540, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002663311039323540, guid: dbb34afac07542140b9f875cfc504159, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -233
       objectReference: {fileID: 0}
     - target: {fileID: 4002663312026973817, guid: dbb34afac07542140b9f875cfc504159, type: 3}
       propertyPath: m_Camera
@@ -411,6 +443,10 @@ PrefabInstance:
     - target: {fileID: 1769576572799905590, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: laneIndex
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
@@ -731,7 +767,7 @@ PrefabInstance:
       objectReference: {fileID: 2429980434127618300, guid: 0c4b8ea803334f042a3ea91acbafd79b, type: 3}
     - target: {fileID: 1478766752501434726, guid: 02e179fbb71aff341aacb456d3afb468, type: 3}
       propertyPath: bossStartPos
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1478766752501434726, guid: 02e179fbb71aff341aacb456d3afb468, type: 3}
       propertyPath: actions.Array.size
@@ -1012,10 +1048,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8434852811522801435, guid: cb96386d35d5e3845b2e1fb2dd7bb428, type: 3}
+      propertyPath: m_Size.x
+      value: 3.3785715
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434852811522801435, guid: cb96386d35d5e3845b2e1fb2dd7bb428, type: 3}
+      propertyPath: m_Size.y
+      value: 4.6642857
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434852811522801435, guid: cb96386d35d5e3845b2e1fb2dd7bb428, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 688c6d663a084ab4a83a0f9b198e32e8, type: 3}
     - target: {fileID: 8434852811527195444, guid: cb96386d35d5e3845b2e1fb2dd7bb428, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8434852811527195445, guid: cb96386d35d5e3845b2e1fb2dd7bb428, type: 3}
+      propertyPath: idleSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 688c6d663a084ab4a83a0f9b198e32e8, type: 3}
     - target: {fileID: 8434852811527195446, guid: cb96386d35d5e3845b2e1fb2dd7bb428, type: 3}
       propertyPath: m_RootOrder
       value: 4
