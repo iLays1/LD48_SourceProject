@@ -129,5 +129,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occupant: {fileID: 0}
   laneSpriteRend: {fileID: 1798944322}
-  safeColor: {r: 0, g: 0, b: 0, a: 0.05882353}
+  safeColor: {r: 0, g: 0, b: 0, a: 0}
   modifiers: []

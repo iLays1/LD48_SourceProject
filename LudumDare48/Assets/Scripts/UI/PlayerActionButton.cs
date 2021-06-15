@@ -67,13 +67,11 @@ public class PlayerActionButton : MonoBehaviour
     {
         bool skillUsed = action.Do(user, dir);
 
-        if (skillUsed && action is CoolDownAction)
+        if (skillUsed && action.coolDown > 0)
         {
-            var cdAction = action as CoolDownAction;
-
             SetActive(false);
-            coolDown = cdAction.coolDown + 1;
-            cdtext.text = $"{cdAction.coolDown}";
+            coolDown = action.coolDown + 1;
+            cdtext.text = $"{action.coolDown}";
         }
 
         return skillUsed;
@@ -81,6 +79,12 @@ public class PlayerActionButton : MonoBehaviour
 
     public void LoadButton(UnitAction action)
     {
+        if(action == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         this.action = action;
         text.text = action.displayName;
         iconImage.sprite = action.icon;

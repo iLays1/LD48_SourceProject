@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Swap
   icon: {fileID: 0}
+  coolDown: 2
   stationaryAction: 0

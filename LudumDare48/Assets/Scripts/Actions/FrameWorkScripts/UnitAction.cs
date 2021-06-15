@@ -6,6 +6,7 @@ public abstract class UnitAction : ScriptableObject
 {
     public string displayName;
     public Sprite icon;
+    public int coolDown;
 
     [HideInInspector]
     public bool stationaryAction = false;
