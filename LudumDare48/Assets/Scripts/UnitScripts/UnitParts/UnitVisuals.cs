@@ -64,11 +64,13 @@ public class UnitVisuals : MonoBehaviour
     {
         Destroy(anim);
         deathParticle.Play();
-        rend.DOFade(0f, 1.5f);
+        rend.DOFade(0f, 0.5f);
         rend.transform.DOMoveY(10f, 3f);
-        rend.transform.DORotate(new Vector3(0,0,360), 2f, RotateMode.FastBeyond360);
+        rend.transform.DORotate(new Vector3(0, 0, 360), 2f, RotateMode.FastBeyond360);
         yield return new WaitForSeconds(3f);
         rend.DOKill();
         Destroy(gameObject);
     }
+
+
 }

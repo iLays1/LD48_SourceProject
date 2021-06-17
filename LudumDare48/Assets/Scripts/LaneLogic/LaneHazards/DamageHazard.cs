@@ -13,7 +13,7 @@ public class DamageHazard : Hazard
     }
     IEnumerator HazardCoroutine()
     {
-        yield return new WaitForSeconds(0.002f);
+        yield return new WaitForSecondsRealtime(0.0001f);
 
         Sequence s = DOTween.Sequence();
 

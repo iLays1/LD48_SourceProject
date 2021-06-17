@@ -34,7 +34,7 @@ public class EnemyChargerBehavior : EnemyBehavior
             BeginCharge();
         }
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSecondsRealtime(0.05f);
 
         BasicAct();
     }

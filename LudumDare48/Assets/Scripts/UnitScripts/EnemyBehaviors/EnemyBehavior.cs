@@ -18,7 +18,7 @@ public abstract class EnemyBehavior : MonoBehaviour
     public virtual void EnemyAct() => StartCoroutine(EnemyActCoroutine());
     IEnumerator EnemyActCoroutine()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSecondsRealtime(0.05f);
         BasicAct();
     }
 

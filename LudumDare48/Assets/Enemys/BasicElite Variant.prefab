@@ -127,6 +127,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.65
       objectReference: {fileID: 0}
+    - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 61.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067883235697405231, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067883235697405231, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.058
+      objectReference: {fileID: 0}
     - target: {fileID: 7964241789663070223, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_fontColor.b
       value: 0.82550424
