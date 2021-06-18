@@ -17,7 +17,7 @@ public class DamageHazard : Hazard
 
         Sequence s = DOTween.Sequence();
 
-        s.Append(transform.DOMoveY(20, 0.4f));
+        s.Append(transform.DOMoveY(-20, 0.3f));
         s.AppendCallback(() => Destroy(gameObject));
 
         if (targetLane.occupant != null)

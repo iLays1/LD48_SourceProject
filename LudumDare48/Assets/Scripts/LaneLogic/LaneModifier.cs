@@ -9,7 +9,7 @@ public class LaneModifier : MonoBehaviour
 
     public virtual void Initalize()
     {
-        transform.position = targetLane.transform.position + (Vector3.down * 2.5f);
+        transform.position = targetLane.transform.position + (Vector3.up * 5f);
         targetLane.SetColor(modifierColor);
         targetLane.modifiers.Add(this);
     }

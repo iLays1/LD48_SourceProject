@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fe0c243c8b732474c9429bcb3b47cd5b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3254902}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059953906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.43, z: 0}
+  m_LocalPosition: {x: 0, y: 9.56, z: 0}
   m_LocalScale: {x: 1.2341, y: 1.2341, z: 1.2341}
   m_Children: []
   m_Father: {fileID: 7775057010209851720}
@@ -155,8 +155,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe0c243c8b732474c9429bcb3b47cd5b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 4991942289611497567, guid: 6aaa667ecc623184f89ba9a2d787c457, type: 3}
+  m_Color: {r: 0.23584908, g: 0.1150139, b: 0.06786223, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -214,7 +214,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLane: {fileID: 0}
   modifierColor: {r: 1, g: 0, b: 0, a: 0.29411766}
-  hazardColor: {r: 1, g: 0, b: 0, a: 0.29411766}
   damage: 10
 --- !u!95 &678679114
 Animator:

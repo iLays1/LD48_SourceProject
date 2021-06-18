@@ -12,8 +12,7 @@ public class HpSlider : MonoBehaviour
         go.transform.SetParent(GameObject.Find("WorldCanvas").transform);
         
         HpSlider hpSlider = go.GetComponent<HpSlider>();
-
-        hpSlider.offset = Vector3.down;
+        
         hpSlider.unit = unit;
         hpSlider.slider.maxValue = unit.maxHp;
         hpSlider.slider.value = unit.hp;

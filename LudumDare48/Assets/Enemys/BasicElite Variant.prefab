@@ -15,19 +15,6 @@ MonoBehaviour:
   action: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
   chargeTimes: 2
   chargeSpeed: 1
---- !u!114 &7746985832840201435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2429980434127618301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f9ec4c403595649bb843963f3fcf2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldFactor: 0.5
 --- !u!1001 &4122986982806974411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3237860105636545605, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.65
+      value: 2.515
       objectReference: {fileID: 0}
     - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: ShapeModule.radius.value
@@ -145,7 +132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5067883235697405231, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.058
+      value: 0.734
       objectReference: {fileID: 0}
     - target: {fileID: 7964241789663070223, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_fontColor.b

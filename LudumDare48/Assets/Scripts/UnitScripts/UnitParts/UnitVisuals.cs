@@ -40,7 +40,7 @@ public class UnitVisuals : MonoBehaviour
     IEnumerator AttackAnimCoroutine()
     {
         rend.sprite = attackingSprite;
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSecondsRealtime(0.24f);
         rend.sprite = idleSprite;
     }
 
@@ -53,7 +53,7 @@ public class UnitVisuals : MonoBehaviour
         hitParticle.Play();
 
         rend.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         rend.color = baseColor;
     }
     public void DeathAnimation()
@@ -64,10 +64,9 @@ public class UnitVisuals : MonoBehaviour
     {
         Destroy(anim);
         deathParticle.Play();
-        rend.DOFade(0f, 0.5f);
-        rend.transform.DOMoveY(10f, 3f);
+        rend.DOFade(0f, 0.4f);
         rend.transform.DORotate(new Vector3(0, 0, 360), 2f, RotateMode.FastBeyond360);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(3f);
         rend.DOKill();
         Destroy(gameObject);
     }
