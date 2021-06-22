@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: 7be418b09a516734f845f4822eca3779, type: 2}
+  waitTime: 0.04
 --- !u!1001 &4137790593604658555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: maxHp
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: speed
@@ -101,9 +102,17 @@ PrefabInstance:
       value: 0.089
       objectReference: {fileID: 0}
     - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: actTime
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: idleSprite
       value: 
       objectReference: {fileID: 21300000, guid: 208eb95acf49a984b828e9beca9117c0, type: 3}
+    - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: actingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dea7e159030a7c747b3905b06f3d1ce4, type: 3}
     - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: attackingSprite
       value: 

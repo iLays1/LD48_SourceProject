@@ -24,12 +24,13 @@ public class SwapperAction : UnitAction
             user.visuals.FlipRight();
 
         if (user.visuals != null)
-            user.visuals.AttackAnimation();
+            user.visuals.ActAnimation();
 
         pLane.occupant = null;
         tLane.occupant.SetLane(ui);
         user.laneIndex = ti;
         user.SetLane(user.laneIndex);
+        user.visuals.ActAnimation();
 
         return true;
     }

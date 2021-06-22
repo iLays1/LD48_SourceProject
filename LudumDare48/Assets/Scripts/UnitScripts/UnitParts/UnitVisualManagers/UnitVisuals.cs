@@ -6,7 +6,8 @@ public class UnitVisuals : MonoBehaviour
 {
     public SpriteRenderer rend;
     public Sprite idleSprite;
-    public Sprite attackingSprite;
+    public Sprite actingSprite;
+    public float actTime = 0.24f;
     //public TrailRenderer trail;
     Color baseColor;
     Animator anim;
@@ -14,11 +15,15 @@ public class UnitVisuals : MonoBehaviour
     [SerializeField] ParticleSystem deathParticle;
     [SerializeField] ParticleSystem hitParticle;
 
+    WaitForSeconds waitForActTime;
+    WaitForSeconds waitForDamagedAnim = new WaitForSeconds(0.2f);
     private void Awake()
     {
         if (rend == null) rend = GetComponentInChildren<SpriteRenderer>();
 
-        rend.sprite = idleSprite;
+        waitForActTime = new WaitForSeconds(actTime);
+
+        ReturnSpriteToNeutral();
         anim = rend.GetComponent<Animator>();
         baseColor = rend.color;
     }
@@ -32,16 +37,16 @@ public class UnitVisuals : MonoBehaviour
         rend.flipX = false;
     }
 
-    public void AttackAnimation()
+    public void ActAnimation()
     {
-        StopCoroutine(AttackAnimCoroutine());
-        StartCoroutine(AttackAnimCoroutine());
+        StopCoroutine(ActAnimCoroutine());
+        StartCoroutine(ActAnimCoroutine());
     }
-    IEnumerator AttackAnimCoroutine()
+    IEnumerator ActAnimCoroutine()
     {
-        rend.sprite = attackingSprite;
-        yield return new WaitForSecondsRealtime(0.24f);
-        rend.sprite = idleSprite;
+        rend.sprite = actingSprite;
+        yield return waitForActTime;
+        ReturnSpriteToNeutral();
     }
 
     public void DamagedAnimation()
@@ -53,7 +58,7 @@ public class UnitVisuals : MonoBehaviour
         hitParticle.Play();
 
         rend.color = Color.red;
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return waitForDamagedAnim;
         rend.color = baseColor;
     }
     public void DeathAnimation()
@@ -71,5 +76,8 @@ public class UnitVisuals : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    public void ReturnSpriteToNeutral()
+    {
+        rend.sprite = idleSprite;
+    }
 }

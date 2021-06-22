@@ -12,6 +12,8 @@ public class LevelEndHandler : MonoBehaviour
     public LevelManager levelManager;
     FallingPlayer player;
 
+    WaitForSeconds waitForReset = new WaitForSeconds(4f);
+
     private void Awake()
     {
         levelManager.OnObjectiveComplete.AddListener(PlayerWin);
@@ -34,7 +36,7 @@ public class LevelEndHandler : MonoBehaviour
 
         Debug.Log("WIN");
 
-        yield return new WaitForSeconds(6f);
+        yield return waitForReset;
         SceneManager.LoadScene(0);
     }
 
@@ -48,7 +50,7 @@ public class LevelEndHandler : MonoBehaviour
 
         Debug.Log("LOSE");
 
-        yield return new WaitForSeconds(3f);
+        yield return waitForReset;
         SceneManager.LoadScene(0);
     }
 }

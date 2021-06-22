@@ -9,16 +9,19 @@ public abstract class EnemyBehavior : MonoBehaviour
     protected FallingEnemy enemy;
 
     public UnitAction action;
+    public float waitTime = 0.25f;
+    protected WaitForSeconds WaitForTime;
 
     private void Awake()
     {
+        WaitForTime = new WaitForSeconds(waitTime);
         enemy = GetComponent<FallingEnemy>();   
     }
     
     public virtual void EnemyAct() => StartCoroutine(EnemyActCoroutine());
     IEnumerator EnemyActCoroutine()
     {
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return WaitForTime;
         BasicAct();
     }
 

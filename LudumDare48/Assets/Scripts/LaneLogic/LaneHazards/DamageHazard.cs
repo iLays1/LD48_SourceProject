@@ -6,6 +6,12 @@ using UnityEngine;
 public class DamageHazard : Hazard
 {
     public int damage = 10;
+    WaitForSeconds waitForTime = new WaitForSeconds(0.0001f);
+
+    public override void Initalize()
+    {
+        base.Initalize();
+    }
 
     protected override void Activate()
     {
@@ -13,7 +19,7 @@ public class DamageHazard : Hazard
     }
     IEnumerator HazardCoroutine()
     {
-        yield return new WaitForSecondsRealtime(0.0001f);
+        yield return waitForTime;
 
         Sequence s = DOTween.Sequence();
 

@@ -10,6 +10,9 @@ public class BossSpawnSequencer : MonoBehaviour
     FallingPlayer player;
     LevelManager levelManager;
 
+    WaitForSeconds waitForFlash = new WaitForSeconds(2f);
+    WaitForSeconds waitForBoss = new WaitForSeconds(0.3f);
+
     private void Awake()
     {
         player = FindObjectOfType<FallingPlayer>();
@@ -37,12 +40,12 @@ public class BossSpawnSequencer : MonoBehaviour
         s.Append(screenOverlay.DOColor(flashColor, flashTime / 6));
         s.Append(screenOverlay.DOColor(Color.clear, flashTime / 6));
         
-        yield return new WaitForSeconds(flashTime);
+        yield return waitForFlash;
 
         levelManager.SpawnBoss(bossPos);
         //Display name text
 
-        yield return new WaitForSeconds(0.3f);
+        yield return waitForBoss;
         //start boss music up
         player.isActive = true;
     }

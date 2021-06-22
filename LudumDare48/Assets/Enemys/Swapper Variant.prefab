@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: 8bae6ba65f6835d46b8989b9bfed5fc4, type: 2}
+  waitTime: 0.06
 --- !u!1001 &9174859662836050500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3237860105636545605, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.771
+      value: 2.467
       objectReference: {fileID: 0}
     - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: ShapeModule.radius.value
@@ -106,12 +107,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5067883235697405231, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.051
+      value: 0.485
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: actTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: idleSprite
       value: 
       objectReference: {fileID: 21300000, guid: 42b1234516863d4459e1b1db1e3adcca, type: 3}
+    - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: actingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 95f21540d29a51c41883489ff68f772c, type: 3}
     - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: attackingSprite
       value: 

@@ -38,7 +38,7 @@ public class RangedAttackAction : UnitAction
             int dmg = Mathf.RoundToInt(user.attackPower * damageFactor);
             if (dmg < 1) dmg = 1;
 
-            user.visuals.AttackAnimation();
+            user.visuals.ActAnimation();
             target.damager.TakeAttackDamage(dmg, user.laneIndex);
             return true;
         }

@@ -9,6 +9,7 @@ public class UnitDamager : MonoBehaviour
     protected ScreenShaker screenShaker;
     FadingText dmgText;
     int dmg;
+    WaitForSeconds waitForDamageTextClear = new WaitForSeconds(0.3f);
 
     public virtual void Awake()
     {
@@ -64,7 +65,7 @@ public class UnitDamager : MonoBehaviour
 
     IEnumerator DamageTextCoroutine()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return waitForDamageTextClear;
         dmgText = null;
     }
 }

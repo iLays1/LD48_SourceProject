@@ -16,6 +16,7 @@ public class ThreatSpawner : MonoBehaviour
     int population = 0;
 
     bool spawning = true;
+    WaitForSeconds waitForSpawnHazard = new WaitForSeconds(0.02f);
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class ThreatSpawner : MonoBehaviour
     }
     IEnumerator SpawnHazardsCoroutine(int count)
     {
-        yield return new WaitForSeconds(0.02f);
+        yield return waitForSpawnHazard;
 
         if (spawning)
         {
@@ -62,7 +63,7 @@ public class ThreatSpawner : MonoBehaviour
     }
     IEnumerator SpawnEnemiesCoroutine(int count)
     {
-        yield return new WaitForSeconds(0.02f);
+        yield return waitForSpawnHazard;
 
         if (spawning)
         {

@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour
     bool gameOver = false;
     FallingPlayer player;
     BossSpawnSequencer bossSpawner;
+    WaitForSeconds waitToSpawn = new WaitForSeconds(0.02f);
 
     private void Awake()
     {
@@ -103,7 +104,7 @@ public class LevelManager : MonoBehaviour
     }
     IEnumerator SpawnEnemyPrefabDelayedCoroutine(EnemySpawnSet.EnemySpawningParameter param)
     {
-        yield return new WaitForSeconds(0.02f);
+        yield return waitToSpawn;
         ThreatSpawner.SpawnEnemyPrefab(param.enemyPrefab);
     }
 
@@ -134,7 +135,7 @@ public class LevelManager : MonoBehaviour
                 else
                 {
                     //is player
-                    i++;
+                    i--;
                 }
             }
             else

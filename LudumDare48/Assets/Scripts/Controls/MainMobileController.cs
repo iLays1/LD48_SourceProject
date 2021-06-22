@@ -13,9 +13,11 @@ public class MainMobileController : MonoBehaviour
     public float edgeDis = 10f;
     Camera cam;
     public bool actionValid = true;
+    WaitForSeconds waitForAction;
 
     private void Awake()
     {
+        waitForAction = new WaitForSeconds(0.1f);
         cam = Camera.main;
         CallCancel.AddListener(CancelAction);
     }
@@ -74,7 +76,7 @@ public class MainMobileController : MonoBehaviour
     IEnumerator CancelableActionCoroutine(UnityAction action)
     {
         actionValid = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return waitForAction;
         if(actionValid) action.Invoke();
     }
 }

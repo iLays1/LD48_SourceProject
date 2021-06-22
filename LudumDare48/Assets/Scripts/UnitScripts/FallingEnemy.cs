@@ -34,6 +34,7 @@ public class FallingEnemy : FallingUnit
 
         actSpeed = speed + player.speed;
         if (actSpeed < 1) actSpeed = 1;
+
         actTimer = actSpeed;
 
         timerText.text = actTimer.ToString();

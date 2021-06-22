@@ -10,7 +10,10 @@ public class FallingPlayer : FallingUnit
     public bool isActive = true;
     public bool keyboardControls = true;
     bool moving = false;
-    
+
+    WaitForEndOfFrame endOfFrame = new WaitForEndOfFrame();
+    WaitForSeconds waitForMoveLimiter = new WaitForSeconds(0.05f);
+
     public void LeftAction()
     {
         if (moving || !isActive) return;
@@ -71,14 +74,14 @@ public class FallingPlayer : FallingUnit
     IEnumerator LimitInputsCoroutine()
     {
         moving = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return waitForMoveLimiter;
         moving = false;
     }
 
     void TickAction() => StartCoroutine(TickActionCoroutine());
     IEnumerator TickActionCoroutine()
     {
-        yield return new WaitForEndOfFrame();
+        yield return endOfFrame;
 
         LimitInputs();
         OnAction.Invoke();

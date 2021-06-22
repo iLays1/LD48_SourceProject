@@ -19,7 +19,7 @@ public class AttackAction : UnitAction
 
         user.unitAudio?.attackSound.Play();
         if (user.visuals != null)
-            user.visuals.AttackAnimation();
+            user.visuals.ActAnimation();
         
         return true;
     }

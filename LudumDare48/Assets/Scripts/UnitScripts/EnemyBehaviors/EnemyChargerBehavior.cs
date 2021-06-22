@@ -6,14 +6,18 @@ public class EnemyChargerBehavior : EnemyBehavior
 {
     public int chargeTimes;
     public int chargeSpeed;
-
+    public UnitVisuals visuals;
+    public Sprite chargingSprite;
+    Sprite idleSprite;
     bool charging = false;
     int oActspeed;
     int charges = 0;
     
     protected void Start()
     {
+        idleSprite = visuals.idleSprite;
         oActspeed = enemy.actSpeed;
+
         EndCharge();
     }
 
@@ -34,7 +38,7 @@ public class EnemyChargerBehavior : EnemyBehavior
             BeginCharge();
         }
 
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return WaitForTime;
 
         BasicAct();
     }
@@ -46,12 +50,18 @@ public class EnemyChargerBehavior : EnemyBehavior
 
         charging = true;
 
+        visuals.idleSprite = chargingSprite;
+        visuals.ReturnSpriteToNeutral();
+
         enemy.timerText.text = enemy.actTimer.ToString();
     }
     void EndCharge()
     {
         enemy.actSpeed = oActspeed;
         enemy.actTimer = enemy.actSpeed;
+
+        visuals.idleSprite = idleSprite;
+        visuals.ReturnSpriteToNeutral();
 
         charges = 0;
         charging = false;

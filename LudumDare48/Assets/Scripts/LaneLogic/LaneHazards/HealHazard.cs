@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealHazard : Hazard
 {
     public int amount = 10;
+    WaitForSeconds waitForTime = new WaitForSeconds(0.002f);
 
     protected override void Activate()
     {
@@ -13,7 +14,7 @@ public class HealHazard : Hazard
     }
     IEnumerator HazardCoroutine()
     {
-        yield return new WaitForSeconds(0.002f);
+        yield return waitForTime;
 
         Sequence s = DOTween.Sequence();
 
