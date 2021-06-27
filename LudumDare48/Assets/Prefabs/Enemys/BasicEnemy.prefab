@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
-  waitTime: 0.035
+  waitTime: 0.04
 --- !u!114 &4426866943357699348
 MonoBehaviour:
   m_ObjectHideFlags: 0

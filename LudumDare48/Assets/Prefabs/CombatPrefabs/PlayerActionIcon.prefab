@@ -280,7 +280,6 @@ GameObject:
   - component: {fileID: 4400144522872511122}
   - component: {fileID: 4400144522872511123}
   - component: {fileID: 837021629}
-  - component: {fileID: 837021630}
   - component: {fileID: 6990285346710862576}
   m_Layer: 5
   m_Name: PlayerActionIcon
@@ -335,7 +334,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6990285346710862576}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   action: {fileID: 0}
   active: 1
   text: {fileID: 4400144521560374734}
@@ -368,19 +379,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 110.08106, y: 103.73831}
   m_EdgeRadius: 0
---- !u!114 &837021630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4400144522872511127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484ab63fcce431a428402cbd71adfe85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  source: {fileID: 6990285346710862576}
 --- !u!82 &6990285346710862576
 AudioSource:
   m_ObjectHideFlags: 0

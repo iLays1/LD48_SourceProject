@@ -30,7 +30,7 @@ public class PlayerActionButton : MonoBehaviour
     }
     private void Start()
     {
-        SetActive(true);
+        SetCoolDownActive(true);
     }
 
     private void LateUpdate()
@@ -69,7 +69,7 @@ public class PlayerActionButton : MonoBehaviour
 
         if (skillUsed && action.coolDown > 0)
         {
-            SetActive(false);
+            SetCoolDownActive(false);
             coolDown = action.coolDown + 1;
             cdtext.text = $"{action.coolDown}";
         }
@@ -92,10 +92,10 @@ public class PlayerActionButton : MonoBehaviour
 
     public void ClickButton()
     {
-        if (!active) return;
-
-        //Debug.Log(name);
         MainMobileController.CallCancel.Invoke();
+
+        if (!active) return;
+        
         OnClick.Invoke();
     }
 
@@ -106,13 +106,14 @@ public class PlayerActionButton : MonoBehaviour
             coolDown--;
             cdtext.text = coolDown.ToString();
             if (coolDown == 0)
-                SetActive(true);
+                SetCoolDownActive(true);
         }
     }
 
-    public void SetActive(bool active)
+    public void SetCoolDownActive(bool active)
     {
-        this.active = active;
+        SetActive(active);
+
         cdCover.gameObject.SetActive(!active);
         cdtext.gameObject.SetActive(!active);
 
@@ -121,5 +122,10 @@ public class PlayerActionButton : MonoBehaviour
             if (SkillSelection.selectedAction == this)
                 selector.SetSkill(0);
         }
+    }
+
+    public void SetActive(bool active)
+    {
+        this.active = active;
     }
 }

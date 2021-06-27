@@ -1,42 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3927549653597160179
+--- !u!114 &4470930963072902081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2429980434127618301}
+  m_GameObject: {fileID: 3778591809429980050}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7d55096519cf874b8aa241a9761edbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
-  waitTime: 0.03
-  chargeTimes: 2
+  waitTime: 0.04
+  chargeTimes: 4
   chargeSpeed: 1
-  visuals: {fileID: 5568841749772491172}
+  visuals: {fileID: 6377597893772581579}
   chargingSprite: {fileID: 21300000, guid: 52c248ba8dda1e74aaebe7a72d4f69c3, type: 3}
---- !u!1001 &4122986982806974411
+--- !u!1001 &3242184634990144676
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2081464467, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081464467, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081464467, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.22
-      objectReference: {fileID: 0}
     - target: {fileID: 2081464469, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -47,11 +35,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2081464469, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_Color.g
-      value: 0.504717
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2081464469, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_Color.r
-      value: 0.8659822
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_RootOrder
@@ -59,11 +47,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.69
+      value: 6.5958185
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.61
+      value: 2.64636
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905589, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -99,67 +87,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905590, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: m_Name
-      value: BasicElite Variant
+      value: Charger Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: maxHp
-      value: 75
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: speed
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: defense
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: actTimer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: attackPower
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3237860105636545605, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.797
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 61.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067883235697405217, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067883235697405231, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.038
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067883235697405231, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.734
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964241789663070223, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.82550424
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964241789663070223, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.6462264
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964241789663070223, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964241789663070223, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4292060671
+      propertyPath: laneIndex
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: idleSprite
@@ -172,17 +112,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1169064080858015008, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
---- !u!1 &2429980434127618301 stripped
+--- !u!1 &3778591809429980050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1769576572799905590, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-  m_PrefabInstance: {fileID: 4122986982806974411}
+  m_PrefabInstance: {fileID: 3242184634990144676}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5568841749772491172 stripped
+--- !u!114 &6377597893772581579 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8394510427430139503, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
-  m_PrefabInstance: {fileID: 4122986982806974411}
+  m_PrefabInstance: {fileID: 3242184634990144676}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2429980434127618301}
+  m_GameObject: {fileID: 3778591809429980050}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0db611c2c28a29345b0e12f8c007770e, type: 3}
