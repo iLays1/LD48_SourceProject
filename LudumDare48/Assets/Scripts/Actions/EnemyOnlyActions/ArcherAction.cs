@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Action/Enemy_ArcherAction")]
 public class ArcherAction : UnitAction
 {
+    public ArrowHazard arrowHazardPrefab;
+
     public override bool Do(FallingUnit user, int dir)
     {
         var target = FindObjectOfType<FallingPlayer>();
@@ -19,11 +21,16 @@ public class ArcherAction : UnitAction
         if (dir == 1)
             user.visuals.FlipRight();
 
-        target.damager.TakeAttackDamage(user.attackPower, user.laneIndex);
+        var arrow = Instantiate(arrowHazardPrefab);
 
-        user.unitAudio?.attackSound.Play();
+        arrow.damage = user.attackPower;
+        arrow.targetLane = LaneManager.instance.lanes[target.laneIndex];
+        arrow.Initalize();
+
         if (user.visuals != null)
             user.visuals.ActAnimation();
+        
+        user.unitAudio?.attackSound.Play();
 
         return true;
     }

@@ -15,11 +15,23 @@ public class Lane : MonoBehaviour
         ResetColor();
     }
 
-    public void SetColor(Color color)
+    public void UpdateColor()
+    {
+        ResetColor();
+        if(modifiers.Count > 0)
+        {
+            foreach (var mod in modifiers)
+            {
+                SetColor(mod.modifierColor);
+            }
+        }
+    }
+
+    void SetColor(Color color)
     {
         laneSpriteRend.color = color;
     }
-    public void ResetColor()
+    void ResetColor()
     {
         laneSpriteRend.color = safeColor;
     }

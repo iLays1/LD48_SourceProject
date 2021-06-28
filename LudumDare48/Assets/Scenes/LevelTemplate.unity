@@ -450,10 +450,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2441705380155574860, guid: afa4cb8729dd25d4484369d76e19f44e, type: 3}
-      propertyPath: laneIndex
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2441705380155574861, guid: afa4cb8729dd25d4484369d76e19f44e, type: 3}
       propertyPath: m_Name
       value: Archer Variant

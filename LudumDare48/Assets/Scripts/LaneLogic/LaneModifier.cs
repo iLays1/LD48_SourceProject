@@ -10,13 +10,12 @@ public class LaneModifier : MonoBehaviour
     public virtual void Initalize()
     {
         transform.position = targetLane.transform.position + (Vector3.up * 5f);
-        targetLane.SetColor(modifierColor);
         targetLane.modifiers.Add(this);
+        targetLane.UpdateColor();
     }
     public virtual void RemoveModifier()
     {
         targetLane.modifiers.Remove(this);
-        targetLane.ResetColor();
-        Destroy(gameObject);
+        targetLane.UpdateColor();
     }
 }

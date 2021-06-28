@@ -3,17 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageHazard : Hazard
+public class ArrowHazard : LaneModifier
 {
     public int damage = 10;
     WaitForSeconds waitForTime = new WaitForSeconds(0.0001f);
 
-    public override void Initalize()
+    private void Start()
     {
-        base.Initalize();
+        TickManager.OnTick.AddListener(Activate);
     }
 
-    protected override void Activate()
+    public override void Initalize()
+    {
+        transform.position = targetLane.transform.position + (Vector3.up * 3f);
+        targetLane.modifiers.Add(this);
+        targetLane.UpdateColor();
+    }
+
+    void Activate()
     {
         Sequence s = DOTween.Sequence();
 

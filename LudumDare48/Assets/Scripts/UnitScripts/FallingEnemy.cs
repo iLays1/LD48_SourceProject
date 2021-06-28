@@ -17,7 +17,8 @@ public class FallingEnemy : FallingUnit
 
     EnemyBehavior behavior;
 
-    protected FallingPlayer player;
+    [HideInInspector]
+    public FallingPlayer player;
 
     [HideInInspector]
     public bool customDeath = false;

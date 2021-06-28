@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: 
   icon: {fileID: 0}
+  coolDown: 0
   stationaryAction: 0
+  arrowHazardPrefab: {fileID: 5611746732630148071, guid: 3c7b56dff0375eb40ab31d814a8dc4dc, type: 3}

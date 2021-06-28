@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &762997209
+--- !u!114 &4746320483877760185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2441705380155574861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55c7f2615b9f2c04087e1a48cf26b76a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9918407cc7d899944864fadea3e3e3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: 7be418b09a516734f845f4822eca3779, type: 2}
   waitTime: 0.04
+  arrowHazardPrefab: {fileID: 5611746732630148071, guid: 3c7b56dff0375eb40ab31d814a8dc4dc, type: 3}
   visuals: {fileID: 5553827153101656852}
   preparingSprite: {fileID: 21300000, guid: 1ece10ca257f5fe468ca1417a4db8fd3, type: 3}
 --- !u!1001 &4137790593604658555
@@ -84,8 +85,12 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
+      propertyPath: laneIndex
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: attackPower
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: attackAction

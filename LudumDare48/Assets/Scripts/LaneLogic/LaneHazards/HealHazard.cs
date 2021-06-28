@@ -26,6 +26,6 @@ public class HealHazard : Hazard
             targetLane.occupant.Heal(amount);
         }
 
-        targetLane.ResetColor();
+        RemoveModifier();
     }
 }

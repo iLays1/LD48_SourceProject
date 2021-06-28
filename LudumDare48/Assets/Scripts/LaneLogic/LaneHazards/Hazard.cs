@@ -9,7 +9,7 @@ public abstract class Hazard : LaneModifier
     {
         TickManager.ActivateHazards.AddListener(Activate);
         LevelEndHandler.OnLevelWin.AddListener(RemoveModifier);
-        targetLane.SetColor(modifierColor);
+        targetLane.UpdateColor();
 
         base.Initalize();
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnParameters:
   - enemyPrefab: {fileID: 2441705380155574860, guid: afa4cb8729dd25d4484369d76e19f44e, type: 3}
-    killsPerSpawn: 12
+    killsPerSpawn: 5
   - enemyPrefab: {fileID: 7484255549227287923, guid: de018147c046bf84e827b8765f88aee9, type: 3}
     killsPerSpawn: 9
   - enemyPrefab: {fileID: 3778591809429980051, guid: bb4c2d745557cf14d9e3cb0883038ead, type: 3}
