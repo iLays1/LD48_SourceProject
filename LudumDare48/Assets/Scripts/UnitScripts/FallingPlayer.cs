@@ -62,6 +62,14 @@ public class FallingPlayer : FallingUnit
     {
         if (moving || !isActive) return;
         
+        if(SkillSelection.selectedAction.action.stationaryAction)
+        {
+            if (facingDir == 1)
+                 UseSkillRight();
+            else UseSkillLeft();
+            return;
+        }
+        
         myLane.OnPlayerInteract(this);
 
         TickAction();

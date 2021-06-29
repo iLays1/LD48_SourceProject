@@ -87,7 +87,12 @@ public class PlayerActionButton : MonoBehaviour
 
         this.action = action;
         text.text = action.displayName;
-        iconImage.sprite = action.icon;
+
+        if(action.icon != null)
+        {
+            iconImage.sprite = action.icon;
+            iconImage.color = Color.white;
+        }
     }
 
     public void ClickButton()

@@ -9,6 +9,7 @@ public abstract class UnitAction : ScriptableObject
     public int coolDown;
 
     [HideInInspector]
-    public bool stationaryAction = false;
+    public virtual bool stationaryAction { get { return false; } }
+
     public abstract bool Do(FallingUnit user, int dir);
 }

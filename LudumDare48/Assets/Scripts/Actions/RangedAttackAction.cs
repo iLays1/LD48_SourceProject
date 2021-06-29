@@ -6,11 +6,7 @@ using UnityEngine;
 public class RangedAttackAction : UnitAction
 {
     public float damageFactor = 0.2f;
-
-    private void Awake()
-    {
-        stationaryAction = true;
-    }
+    public override bool stationaryAction { get { return true; } }
 
     public override bool Do(FallingUnit user, int dir)
     {
