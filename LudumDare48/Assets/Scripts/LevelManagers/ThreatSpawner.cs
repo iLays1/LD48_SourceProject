@@ -23,9 +23,6 @@ public class ThreatSpawner : MonoBehaviour
         TickManager.ActivateHazards.AddListener(() => SpawnHazards(hazardsPerOOMs));
         TickManager.ActivateHazards.AddListener(() => SpawnEnemies(enemiesPerOOMs));
 
-        SpawnHazards(hazardsPerOOMs);
-        SpawnEnemies(enemiesPerOOMs);
-
         LevelEndHandler.OnLevelWin.AddListener(() => spawning = false);
     }
 

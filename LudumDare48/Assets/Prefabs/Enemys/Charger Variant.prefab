@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action: {fileID: 11400000, guid: ee9a3708cac39474a8c76f245d2587c2, type: 2}
   waitTime: 0.04
-  chargeTimes: 4
+  chargeTimes: 2
   chargeSpeed: 1
   visuals: {fileID: 6377597893772581579}
   chargingSprite: {fileID: 21300000, guid: 52c248ba8dda1e74aaebe7a72d4f69c3, type: 3}
@@ -91,7 +91,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: maxHp
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1769576572799905591, guid: 63ff2f0a00a38e04c91dbea1cac474e4, type: 3}
       propertyPath: speed

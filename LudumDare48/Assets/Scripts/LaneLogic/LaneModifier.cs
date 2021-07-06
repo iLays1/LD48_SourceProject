@@ -6,6 +6,7 @@ public class LaneModifier : MonoBehaviour
 {
     public Lane targetLane;
     public Color modifierColor;
+    public SpriteRenderer laneModIcon;
 
     public virtual void Initalize()
     {
@@ -15,6 +16,7 @@ public class LaneModifier : MonoBehaviour
     }
     public virtual void RemoveModifier()
     {
+        laneModIcon.color = Color.clear;
         targetLane.modifiers.Remove(this);
         targetLane.UpdateColor();
     }

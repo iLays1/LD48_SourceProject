@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,11 +30,13 @@ public class Lane : MonoBehaviour
 
     void SetColor(Color color)
     {
-        laneSpriteRend.color = color;
+        laneSpriteRend.DOKill();
+        laneSpriteRend.DOColor(color, 0.2f);
     }
     void ResetColor()
     {
-        laneSpriteRend.color = safeColor;
+        laneSpriteRend.DOKill();
+        laneSpriteRend.DOColor(safeColor, 0.2f);
     }
 
     public void OnPlayerInteract(FallingPlayer player)

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: HP Potion
   icon: {fileID: 21300000, guid: cfd0ede0a7226224083932f72d3dd90f, type: 3}
-  coolDown: 3
+  coolDown: 15
   hazard: {fileID: 8438575005297734785, guid: 60f370195c05fbd42bcaa3e3906ad90b, type: 3}

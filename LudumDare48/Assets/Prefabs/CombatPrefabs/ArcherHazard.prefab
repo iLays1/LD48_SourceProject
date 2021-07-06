@@ -67,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLane: {fileID: 0}
   modifierColor: {r: 0, g: 0, b: 0, a: 0.44705883}
+  laneModIcon: {fileID: 995282011316810407}
   damage: 10
 --- !u!1 &995282011316810272
 GameObject:
@@ -79,7 +80,7 @@ GameObject:
   - component: {fileID: 995282011316810248}
   - component: {fileID: 995282011316810407}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

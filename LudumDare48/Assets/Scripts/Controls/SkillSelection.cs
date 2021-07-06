@@ -26,7 +26,7 @@ public class SkillSelection : MonoBehaviour
             skills[i].transform.DOKill();
             skills[i].transform.DOScale(baseY, 0.5f);
 
-            skills[i].LoadButton(TestPlayerData.instance.actions[i]);
+            skills[i].LoadButton(PlayerEquipment.instance.actions[i]);
         }
 
         SetSkill(selectionIndex, false);

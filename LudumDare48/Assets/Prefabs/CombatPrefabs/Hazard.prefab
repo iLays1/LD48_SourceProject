@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 748340838}
   - component: {fileID: 748340839}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLane: {fileID: 0}
   modifierColor: {r: 1, g: 0, b: 0, a: 0.29411766}
+  laneModIcon: {fileID: 748340839}
   damage: 10
 --- !u!95 &678679114
 Animator:

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLane: {fileID: 0}
   modifierColor: {r: 0.0895544, g: 0.6886792, b: 0, a: 0.22745098}
+  laneModIcon: {fileID: 7356486881907980621}
   heal: 10
 --- !u!1001 &7356486881160789802
 PrefabInstance:
@@ -42,21 +43,45 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.27058825
       objectReference: {fileID: 0}
+    - target: {fileID: 2059953906, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+      propertyPath: m_Name
+      value: havVisual
+      objectReference: {fileID: 0}
     - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.3651594
       objectReference: {fileID: 0}
     - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.3651594
       objectReference: {fileID: 0}
     - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.217198
       objectReference: {fileID: 0}
     - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 14.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98085684
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.19473048
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059953907, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 22.458
       objectReference: {fileID: 0}
     - target: {fileID: 2059953908, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_Sprite
@@ -64,15 +89,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cfd0ede0a7226224083932f72d3dd90f, type: 3}
     - target: {fileID: 2059953908, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.7184941
       objectReference: {fileID: 0}
     - target: {fileID: 2059953908, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.7184941
       objectReference: {fileID: 0}
     - target: {fileID: 2059953908, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.735849
       objectReference: {fileID: 0}
     - target: {fileID: 7775057010209851720, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
       propertyPath: m_RootOrder
@@ -152,5 +177,10 @@ PrefabInstance:
 --- !u!1 &1004849172900279908 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7775057010209851726, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
+  m_PrefabInstance: {fileID: 7356486881160789802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &7356486881907980621 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 748340839, guid: b103ce94f92aca64f871227b366ab47a, type: 3}
   m_PrefabInstance: {fileID: 7356486881160789802}
   m_PrefabAsset: {fileID: 0}

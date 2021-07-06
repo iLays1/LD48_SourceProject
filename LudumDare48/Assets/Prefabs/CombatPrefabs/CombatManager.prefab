@@ -686,7 +686,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   kills: 0
-  killsToWin: 30
+  killsToWin: 35
   enemySet: {fileID: 11400000, guid: 036761d30fee66e45be72d91172c5370, type: 2}
   winTarget: {fileID: 0}
   bossPrefab: {fileID: 2429980434127618300, guid: 0c4b8ea803334f042a3ea91acbafd79b, type: 3}
@@ -746,7 +746,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - active: 1
-    killsTillAction: 29
+    killsTillAction: 34
     action:
       m_PersistentCalls:
         m_Calls:
