@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class FallingPlayer : FallingUnit
 {
     public static UnityEvent OnAction = new UnityEvent();
+    public SkillSelection skills;
     public bool isActive = true;
     public bool keyboardControls = true;
     bool moving = false;
@@ -14,12 +15,22 @@ public class FallingPlayer : FallingUnit
     WaitForEndOfFrame endOfFrame = new WaitForEndOfFrame();
     WaitForSeconds waitForMoveLimiter = new WaitForSeconds(0.05f);
 
+    protected override void Awake()
+    {
+        if (skills == null) skills = FindObjectOfType<SkillSelection>();
+
+        base.Awake();
+    }
+
     public void LeftAction()
     {
         if (moving || !isActive) return;
         
-        if (SkillSelection.selectedAction == null || !SkillSelection.selectedAction.action.stationaryAction)
+        if (skills.selectedAction == null || !skills.selectedAction.action.stationaryAction)
         {
+            if (laneIndex > 0 && lanes[laneIndex - 1].occupant == null)
+                visuals.MoveAnim();
+
             MoveLeft();
         }
         else
@@ -32,8 +43,11 @@ public class FallingPlayer : FallingUnit
     {
         if (moving || !isActive) return;
 
-        if (SkillSelection.selectedAction == null || !SkillSelection.selectedAction.action.stationaryAction)
+        if (skills.selectedAction == null || !skills.selectedAction.action.stationaryAction)
         {
+            if (laneIndex < lanes.Length-1 && lanes[laneIndex + 1].occupant == null)
+                visuals.MoveAnim();
+
             MoveRight();
         }
         else
@@ -45,14 +59,14 @@ public class FallingPlayer : FallingUnit
 
     public void UseSkillLeft(bool tickless = false)
     {
-        bool skillUsed = SkillSelection.selectedAction.UseAction(this, -1);
+        bool skillUsed = skills.selectedAction.UseAction(this, -1);
         if (skillUsed && !tickless) TickAction();
         else
             transform.DOPunchPosition(Vector3.left * 0.5f, 0.1f);
     }
     public void UseSkillRight(bool tickless = false)
     {
-        bool skillUsed = SkillSelection.selectedAction.UseAction(this, 1);
+        bool skillUsed = skills.selectedAction.UseAction(this, 1);
         if (skillUsed && !tickless) TickAction();
         else
             transform.DOPunchPosition(Vector3.right * 0.5f, 0.1f);
@@ -62,7 +76,7 @@ public class FallingPlayer : FallingUnit
     {
         if (moving || !isActive) return;
         
-        if(SkillSelection.selectedAction.action.stationaryAction)
+        if(skills.selectedAction.action.stationaryAction)
         {
             if (facingDir == 1)
                  UseSkillRight();
@@ -112,7 +126,8 @@ public class FallingPlayer : FallingUnit
             if(tick) TickAction();
 
             transform.DOKill();
-            transform.DOMove(myLane.transform.position, 0.2f);
+
+            transform.DOMove(myLane.transform.position, 0.2f).SetEase(Ease.OutCirc);
         }
         else
         {

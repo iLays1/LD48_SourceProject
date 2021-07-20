@@ -17,6 +17,7 @@ public class UnitVisuals : MonoBehaviour
 
     WaitForSeconds waitForActTime;
     WaitForSeconds waitForDamagedAnim = new WaitForSeconds(0.2f);
+
     private void Awake()
     {
         if (rend == null) rend = GetComponentInChildren<SpriteRenderer>();
@@ -47,6 +48,12 @@ public class UnitVisuals : MonoBehaviour
         rend.sprite = actingSprite;
         yield return waitForActTime;
         ReturnSpriteToNeutral();
+    }
+
+    public void MoveAnim()
+    {
+        rend.transform.DOComplete();
+        rend.transform.DOPunchPosition(Vector3.up * 0.35f, 0.18f).SetEase(Ease.Flash);
     }
 
     public void DamagedAnimation()

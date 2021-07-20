@@ -23,7 +23,7 @@ public class PlayerActionButton : MonoBehaviour
 
     private void Awake()
     {
-        selector = FindObjectOfType<SkillSelection>();
+        selector = GetComponentInParent<SkillSelection>();
         col = GetComponent<Collider2D>();
 
         TickManager.OnTick.AddListener(TickEvent);
@@ -124,7 +124,7 @@ public class PlayerActionButton : MonoBehaviour
 
         if (!active)
         {
-            if (SkillSelection.selectedAction == this)
+            if (selector.selectedAction == this)
                 selector.SetSkill(0);
         }
     }

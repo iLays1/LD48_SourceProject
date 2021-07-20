@@ -38,6 +38,7 @@ public abstract class EnemyBehavior : MonoBehaviour
             }
             else
             {
+                enemy.visuals.MoveAnim();
                 enemy.MoveLeft();
             }
         }
@@ -52,6 +53,7 @@ public abstract class EnemyBehavior : MonoBehaviour
             }
             else
             {
+                enemy.visuals.MoveAnim();
                 enemy.MoveRight();
             }
         }

@@ -114,7 +114,7 @@ public class FallingUnit : MonoBehaviour
     {
         if (index < 0) index = 0;
         if (index > lanes.Length - 1) index = lanes.Length - 1;
-
+        
         if (lanes[index].occupant == null)
         {
             myLane.occupant = null;
@@ -125,7 +125,8 @@ public class FallingUnit : MonoBehaviour
             unitAudio?.moveSound.Play();
 
             transform.DOKill();
-            transform.DOMove(myLane.transform.position, 0.2f);
+            transform.DOMove(myLane.transform.position, 0.2f).SetEase(Ease.OutCirc);
+            visuals.MoveAnim();
         }
         else
         {

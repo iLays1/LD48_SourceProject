@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkillSelection : MonoBehaviour
 {
-    public static PlayerActionButton selectedAction;
+    public PlayerActionButton selectedAction;
     public PlayerActionButton[] skills;
     int selectionIndex = 0;
     public AudioSource source;
