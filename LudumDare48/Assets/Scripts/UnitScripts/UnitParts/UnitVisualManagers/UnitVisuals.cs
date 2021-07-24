@@ -48,6 +48,7 @@ public class UnitVisuals : MonoBehaviour
         rend.sprite = actingSprite;
         yield return waitForActTime;
         ReturnSpriteToNeutral();
+
     }
 
     public void MoveAnim()

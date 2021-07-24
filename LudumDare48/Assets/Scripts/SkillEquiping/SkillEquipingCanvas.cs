@@ -18,13 +18,6 @@ public class SkillEquipingCanvas : MonoBehaviour
     {
         Begin();
     }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            End();
-        }
-    }
 
     public void Begin()
     {

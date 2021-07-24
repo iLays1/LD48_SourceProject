@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerEquipment : MonoBehaviour
 {
     public static PlayerEquipment instance;
-    public UnitAction[] actions;
+    public UnitAction[] selectedActions;
+    public UnitAction[] availableActions;
 
     private void Awake()
     {
