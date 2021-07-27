@@ -18,7 +18,7 @@ namespace ilpDragSlots
             {
                 SelectSlot(hoveredSlot);
                 tapLock = true;
-                Invoke("SetTapLockToFalse", 0.15f);
+                Invoke("SetTapLockToFalse", 0.3f);
             }
 
             if (Input.GetMouseButtonUp(0) && hoveredSlot == null)

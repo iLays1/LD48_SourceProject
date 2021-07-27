@@ -84,6 +84,7 @@ public class PlayerActionButton : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+        gameObject.SetActive(true);
 
         this.action = action;
         text.text = action.displayName;

@@ -13,24 +13,18 @@ namespace ilpDragSlots
         public GameObject dataSlotObject;
         public IDataSlotObject contatinedData;
 
-        private void Awake()
+        public void Initalize(GameObject obj)
         {
-            if (dataSlotObject == null)
+            if (obj == null)
             {
                 return;
             }
+            dataSlotObject = obj;
 
             contatinedData = dataSlotObject.GetComponent<IDataSlotObject>();
-            if (contatinedData == null)
-            {
-                Debug.LogWarning($"{name} has no dataSlotObject Component");
-            }
-
             parentCollection = GetComponentInParent<DataSlotCollection>();
-        }
-        private void Start()
-        {
-            RefreshDataSlot();
+
+            Invoke("RefreshDataSlot", 0.05f);
         }
 
         public void SelectSlot()
@@ -49,6 +43,10 @@ namespace ilpDragSlots
             {
                 dataSlotObject = null;
             }
+        }
+        public void LoadData()
+        {
+            contatinedData = dataSlotObject.GetComponent<IDataSlotObject>();
         }
 
         private void OnMouseEnter()

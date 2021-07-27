@@ -15,5 +15,4 @@ MonoBehaviour:
   displayName: Arrow
   icon: {fileID: 0}
   coolDown: 2
-  stationaryAction: 1
-  damageFactor: 0.2
+  damageFactor: 0.75

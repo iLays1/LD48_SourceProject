@@ -28,8 +28,16 @@ public class SkillSelection : MonoBehaviour
 
             skills[i].LoadButton(PlayerEquipment.instance.selectedActions[i]);
         }
-
+        
         SetSkill(selectionIndex, false);
+    }
+
+    public void LoadSkills()
+    {
+        for (int i = 0; i < skills.Length; i++)
+        {
+            skills[i].LoadButton(PlayerEquipment.instance.selectedActions[i]);
+        }
     }
 
     private void Update()
